@@ -25,10 +25,10 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('⚚ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⚚', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('✧ sᴜᴘᴘᴏʀᴛ​ ✧', url='https://t.me/MLZ_BOTZ_SUPPORT'),
-            InlineKeyboardButton('✧ ᴜᴘᴅᴀᴛᴇs​ ✧', url='https://t.me/Tom_Updates')
+            InlineKeyboardButton('✧ sᴜᴘᴘᴏʀᴛ​ ✧', url='https://t.me/+4nzja42ELQwzOWVl'),
+            InlineKeyboardButton('✧ ᴜᴘᴅᴀᴛᴇs​ ✧', url='https://t.me/bot_channel_011')
             ],[
-            InlineKeyboardButton('✘ ᴄʜᴇᴄᴋ ᴘᴍ ✘', url='t.me/TGxMULTIBOT')
+            InlineKeyboardButton('✘ ᴄʜᴇᴄᴋ ᴘᴍ ✘', url='https://t.me/bot_channel_011')
         ]]  
         reply_markup = InlineKeyboardMarkup(buttons)
         kd = await message.reply_photo(
@@ -136,7 +136,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton(f'{filesize}', url='https://t.me/CKTalkies')        
+                          InlineKeyboardButton(f'{filesize}', url='https://t.me/New_Moviee_hindi')        
                          ]
                         ]
                     )
@@ -152,7 +152,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/CKTalkies')        
+                          InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')        
                          ]
                         ]
                     )
@@ -267,7 +267,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/CKTalkies')     
+                      InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')     
                      ]
                     ]
                 )
@@ -317,7 +317,7 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
              [
-              InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/CKTalkies')     
+              InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')     
              ]
             ]
         )
