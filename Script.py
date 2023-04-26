@@ -23,12 +23,12 @@ Hᴇʏ {}
 
 ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..
 
-🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/af_x_su'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a></b>"""
+🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/J_shree_ram'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a></b>"""
 
     ABOUT_TXT = """<b>
 ‣ ᴍʏ ɴᴀᴍᴇ : {}
 ‣ ᴄʀᴇᴀᴛᴏʀ : <a href='tg://settings'>ᴛʜɪs ᴘᴇʀsᴏɴ​</a>
-‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/af_x_su'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a>
+‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/J_shree_ram'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a>
 ‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 3</a>
 ‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a>
@@ -60,7 +60,7 @@ Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
 2. ᴛʜɪꜱ ʙᴏᴛ ꜱᴜᴘᴘᴏʀᴛꜱ ʙᴜᴛᴛᴏɴꜱ ᴡɪᴛʜ ᴀɴʏ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ ᴛʏᴘᴇ.
 3. ʙᴜᴛᴛᴏɴꜱ ꜱʜᴏᴜʟᴅ ʙᴇ ᴘʀᴏᴘᴇʀʟʏ ᴘᴀʀꜱᴇᴅ ᴀꜱ ᴍᴀʀᴋᴅᴏᴡɴ ꜰᴏʀᴍᴀᴛ
 <b>ᴜʀʟ ʙᴜᴛᴛᴏɴꜱ:</b>
-<code>[Button Text](buttonurl:https://t.me/MLZ_BOTZ)</code>
+<code>[Button Text](buttonurl:https://t.me/bot_channel_011)</code>
 <b>ᴀʟᴇʀᴛ ʙᴜᴛᴛᴏɴꜱ:</b>
 <code>[Button Text](buttonalert:ᴛʜɪꜱ ɪꜱ ᴀɴ ᴀʟᴇʀᴛ ᴍᴇꜱꜱᴀɢᴇ)</code>"""
 
@@ -169,11 +169,11 @@ Nᴀᴍᴇ - {}"""
     MELCOW_ENG = """<b>Hᴇʟʟᴏ {} 😍, Aɴᴅ Wᴇʟᴄᴏᴍᴇ Tᴏ {} Gʀᴏᴜᴘ ❤️</b>"""
 
     OWNER_INFO = """
-<b>⍟───[ ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ ]───⍟</b>
+<b>⍟───[ ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ ]───⍟</b>
     
 <b>• ꜰᴜʟʟ ɴᴀᴍᴇ :</b> ᴀꜰsᴀʟ ʜᴀsʜɪᴍ
-<b>• ᴜꜱᴇʀɴᴀᴍᴇ : @af_x_su</b>
-<b>• ɢɪᴛʜᴜʙ : <a href='https://github.com/CyberTG'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a></b>
+<b>• ᴜꜱᴇʀɴᴀᴍᴇ : @J_shree_ram/b>
+<b>• ʙᴏᴛ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/bot_channel_011'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a></b>
 """
     NORSLTS = """
 ★ #𝗡𝗼𝗥𝗲𝘀𝘂𝗹𝘁𝘀 ★
@@ -185,7 +185,7 @@ Nᴀᴍᴇ - {}"""
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
     
     CAPTION = """
-@at3movies {file_name}
+@New_Moviee_hindi {file_name}
 
 ❍ sɪᴢᴇ : {file_size}"""
 
@@ -240,18 +240,18 @@ Aᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs:
     LOGO = """𝑺𝒕𝒂𝒓𝒕𝒊𝒏𝒈.......🥵"""
     
     EARN_TXT = """
-<b>──────「 <a href='https://t.me/AFxSU'>ᴇᴀʀɴ ᴍᴏɴᴇʏ</a> 」─────
+<b>──────「 <a href='https://t.me/J_shree_ram'>ᴇᴀʀɴ ᴍᴏɴᴇʏ</a> 」─────
 
 Now You can start earning 💸 money today with our Simple and easy-to-use bot!
 
 ›› Step 1: Add This bot to your group as an admin..
 
-›› Step 2: If you don't Using any shortner website then make account first on shorturllink.in (You can also use other link shortner website).
+›› Step 2: If you don't Using any shortner website then make account first on omegalinks.in (You can also use other link shortner website).
 
 ›› Step 3: Copy your API from website and then, simply set your website and API Using the
 /set_shortner command
 
-› Like this :  /set_shortner <code>shorturllink.in b4d510e7b1e56da54f43c9e27569ee0a281121db</code>
+› Like this :  /set_shortner <code>omegalinks.in b4d510e7b1e56da54f43c9e27569ee0a281121db</code>
 
 
 ★ This bot will automatically converts links with Your Api and will provide your links.
@@ -332,7 +332,7 @@ coммand and υѕeѕ
 <b>🎪 ᴛɪᴛɪʟᴇ:- {}
 
 ┏🕵️ ᴀsᴋᴇᴅ ʙʏ:- {}
-┣🔆 ᴘᴏᴡᴇʀᴇᴅ ʙʏ:- <a href='https://t.me/TGxMULTIBOT'>ᴛᴏᴍ​</a> 
+┣🔆 ᴘᴏᴡᴇʀᴇᴅ ʙʏ:- <a href='https://t.me/New_Moviee_hindi'>ᴛᴏᴍ​</a> 
 ┗🗃 ᴛᴏᴛᴀʟ ꜰɪʟᴇs:-{}
 
 ❇️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {}</b>"""
