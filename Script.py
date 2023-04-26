@@ -28,7 +28,7 @@ Hᴇʏ {}
     ABOUT_TXT = """<b>
 ‣ ᴍʏ ɴᴀᴍᴇ : {}
 ‣ ᴄʀᴇᴀᴛᴏʀ : <a href='tg://settings'>ᴛʜɪs ᴘᴇʀsᴏɴ​</a>
-‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/J_shree_ram'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a>
+‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/J_shree_ram'>ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ​</a>
 ‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 3</a>
 ‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a>
@@ -171,9 +171,9 @@ Nᴀᴍᴇ - {}"""
     OWNER_INFO = """
 <b>⍟───[ ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ ]───⍟</b>
     
-<b>• ꜰᴜʟʟ ɴᴀᴍᴇ :</b> ᴀꜰsᴀʟ ʜᴀsʜɪᴍ
+<b>• ꜰᴜʟʟ ɴᴀᴍᴇ :</b> ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ
 <b>• ᴜꜱᴇʀɴᴀᴍᴇ : @J_shree_ram/b>
-<b>• ʙᴏᴛ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/bot_channel_011'>ᴄʏʙᴇʀ ᠰ ᴛɢ​</a></b>
+<b>• ʙᴏᴛ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/bot_channel_011'>ᴄʜᴀɴɴᴇʟ​</a></b>
 """
     NORSLTS = """
 ★ #𝗡𝗼𝗥𝗲𝘀𝘂𝗹𝘁𝘀 ★
