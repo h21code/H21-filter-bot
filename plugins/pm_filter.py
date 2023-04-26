@@ -834,7 +834,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                   InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                   InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                ],[
-                  InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ")
+                  InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/J_shree_ram")
                  ]
                 ]
             )
@@ -1364,7 +1364,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "owner_info":
         buttons = [[
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='start'),
-            InlineKeyboardButton('✧ ᴄᴏɴᴛᴀᴄᴛ​', url='t.me/ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ')
+            InlineKeyboardButton('✧ ᴄᴏɴᴛᴀᴄᴛ​', url='t.me/J_shree_ram')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -1388,10 +1388,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "support_grp":
         buttons = [[
-            InlineKeyboardButton('🫵 sᴜʙsᴄʀɪʙᴇ​ 🫵', url='https://www.youtube.com/@mlzbotz')
+            InlineKeyboardButton('🫵 sᴜʙsᴄʀɪʙᴇ​ 🫵', url='https://t.me/bot_channel_011')
             ],[
-            InlineKeyboardButton('ɢʀᴏᴜᴘ​', url='https://t.me/New_Moviee_hindi'),
-            InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ​', url='https://t.me/+4nzja42ELQwzOWVl')
+            InlineKeyboardButton('ɢʀᴏᴜᴘ​', url='https://t.me/+4nzja42ELQwzOWVl'),
+            InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ​', url='https://t.me/New_Moviee_hindi')
             ],[      
             InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ​', url='https://t.me/+4nzja42ELQwzOWVl'),
             InlineKeyboardButton('ᴜᴘᴅᴀᴛᴇs​', url='https://t.me/bot_channel_011')
