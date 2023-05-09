@@ -75,7 +75,7 @@ REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL)
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 
 # Others
-VERIFY = bool(environ.get('VERIFY', False))
+VERIFY = bool(environ.get('VERIFY', True))
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'OmegaLinks.in')
 SHORTLINK_API = environ.get('SHORTLINK_API', 'cdba45331763bd15ac49b05471a98c5c7120959f')
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
