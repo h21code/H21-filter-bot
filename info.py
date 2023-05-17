@@ -77,7 +77,7 @@ JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 # Others
 VERIFY = bool(environ.get('VERIFY', True))
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'OmegaLinks.in')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'a7dd73ad6bc8aee4cc1d52b750f58ac69ed52591')
+SHORTLINK_API = environ.get('SHORTLINK_API', 'cdba45331763bd15ac49b05471a98c5c7120959f')
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
 NO_RESULTS_MSG = bool(environ.get('NO_RESULTS_MSG', False))
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
