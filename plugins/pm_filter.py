@@ -273,7 +273,7 @@ async def next_page(bot, query):
                     ],
                 )
     btn.insert(0, [
-        InlineKeyboardButton('🍿ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ🍿', url=f'https://t.me/+W5plh7_tP19lZjg1')
+        InlineKeyboardButton('ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ', url=f'https://t.me/+W5plh7_tP19lZjg1')
     ])
     try:
         await query.edit_message_reply_markup(
@@ -762,7 +762,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                               InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                               InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                            ],[
-                              InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/ᴊ_ꜱʜʀᴇᴇ_ʀᴀᴍ")
+                              InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/J_shree_ram")
                              ]
                             ]
                         )
@@ -1286,11 +1286,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⇌ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⇌', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('🧑‍🎓 ᴏᴡɴᴇʀ​', callback_data='owner_info'),
+            InlineKeyboardButton('✦ ᴏᴡɴᴇʀ ✦', callback_data='owner_info'),
             InlineKeyboardButton('🌿 sᴜᴘᴘᴏʀᴛ​', callback_data='support_grp')
             ],[      
             InlineKeyboardButton('💠 ʜᴇʟᴘ 💠', callback_data='help'),
-            InlineKeyboardButton('♻️ ᴀʙᴏᴜᴛ ♻️', callback_data='about')
+            InlineKeyboardButton('✦ ᴀʙᴏᴜᴛ ✦', callback_data='about')
             ],[
             InlineKeyboardButton('💰 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 💸', callback_data='money_bot')
         ]] 
@@ -2601,7 +2601,7 @@ async def auto_filter(client, msg, spoll=False):
                 ]
             )
     btn.insert(0, [
-        InlineKeyboardButton('🍿ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ🍿', url=f'https://t.me/+W5plh7_tP19lZjg1')
+        InlineKeyboardButton('ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ', url=f'https://t.me/+W5plh7_tP19lZjg1')
     ])
 
     if offset != "":
