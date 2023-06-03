@@ -75,7 +75,7 @@ REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL)
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 
 # Others
-VERIFY = bool(environ.get('VERIFY', False))
+VERIFY = bool(environ.get('VERIFY', True))
 HOW_TO_VERIFY = environ.get("HOW_TO_VERIFY", "https://t.me/+W5plh7_tP19lZjg1")
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'ziplinker.net')
 SHORTLINK_API = environ.get('SHORTLINK_API', 'b2488d7cb39a3bda4f66123a3f67cb773af054fb')
