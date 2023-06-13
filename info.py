@@ -77,8 +77,8 @@ JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 # Others
 VERIFY = bool(environ.get('VERIFY', True))
 HOW_TO_VERIFY = environ.get("HOW_TO_VERIFY", "https://t.me/+W5plh7_tP19lZjg1")
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'Mplaylink.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'b1158fcfabf12099bcab8bfc8b9fddadbbea6ed4')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'Omnifly.in.net')
+SHORTLINK_API = environ.get('SHORTLINK_API', '16391e00aebfad25b243edf7e0034eea4fad7325')
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
 NO_RESULTS_MSG = bool(environ.get('NO_RESULTS_MSG', False))
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
