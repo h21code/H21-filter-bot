@@ -25,10 +25,10 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('⚚ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⚚', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('✧ sᴜᴘᴘᴏʀᴛ​ ✧', url='https://t.me/+4nzja42ELQwzOWVl'),
-            InlineKeyboardButton('✧ ᴜᴘᴅᴀᴛᴇs​ ✧', url='https://t.me/bot_channel_011')
+            InlineKeyboardButton('✧ sᴜᴘᴘᴏʀᴛ​ ✧', url='https://t.me/filmy_fundas'),
+            InlineKeyboardButton('✧ ᴜᴘᴅᴀᴛᴇs​ ✧', url='https://t.me/Funda_More')
             ],[
-            InlineKeyboardButton('✘ ᴄʜᴇᴄᴋ ᴘᴍ ✘', url='https://t.me/bot_channel_011')
+            InlineKeyboardButton('✘ ᴄʜᴇᴄᴋ ᴘᴍ ✘', url='https://t.me/JNGohell')
         ]]  
         reply_markup = InlineKeyboardMarkup(buttons)
         kd = await message.reply_photo(
@@ -152,7 +152,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')        
+                          InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/Funda_More')        
                          ]
                         ]
                     )
@@ -268,7 +268,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')     
+                      InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/Funda_More')     
                      ]
                     ]
                 )
@@ -319,7 +319,7 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
              [
-              InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/New_Moviee_hindi')     
+              InlineKeyboardButton("❤️‍🔥 ᴍᴏᴠɪᴇs ❤️‍🔥", url='https://t.me/Funda_More')     
              ]
             ]
         )
@@ -842,8 +842,8 @@ async def set_tutorial_link(client, message):
     try:
         tutorial = re.findall("(?P<url>https?://[^\s]+)", message.text)[0]
     except:
-        await message.reply_text("<b>🛠️ Command Incomplete 🤔\n\n➥Give me a tutorial link along with the command!\n\n📌Example👇\n\n<code>/set_tutorial https://example.com</code>\n\n━━━━━━━━━━━━━━━━━━\n© @J_shree_ram\n</b>")
+        await message.reply_text("<b>🛠️ Command Incomplete 🤔\n\n➥Give me a tutorial link along with the command!\n\n📌Example👇\n\n<code>/set_tutorial https://example.com</code>\n\n━━━━━━━━━━━━━━━━━━\n© @JNGohell\n</b>")
         return
     
     await save_group_settings(grpid, 'tutorial', tutorial)
-    await message.reply_text(f"<b>📌 sᴜᴄᴄᴇssꜰᴜʟʏ ᴀᴅᴅᴇᴅ ᴛᴜᴛᴏʀɪᴀʟ 🎉\n\nʏᴏᴜʀ ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ ꜰᴏʀ ɢʀᴏᴜᴘ {title}ɪs 👇\n\n☞{tutorial}\n\n© @J_shree_ram\n</b>")    
+    await message.reply_text(f"<b>📌 sᴜᴄᴄᴇssꜰᴜʟʏ ᴀᴅᴅᴇᴅ ᴛᴜᴛᴏʀɪᴀʟ 🎉\n\nʏᴏᴜʀ ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ ꜰᴏʀ ɢʀᴏᴜᴘ {title}ɪs 👇\n\n☞{tutorial}\n\n© @JNGohell\n</b>")    
