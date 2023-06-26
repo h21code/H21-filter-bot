@@ -30,7 +30,7 @@ BOT_TOKEN = "6214363227:AAECxKd8TxxoPLe1E1ybLF2YfaJyo5BwrFo"
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://telegra.ph/file/f9976cc1e3ef20e957c43.jpg https://telegra.ph/file/31fa637bf595182df87a8.jpg https://telegra.ph/file/032c7b672740d02e57903.jpg https://telegra.ph/file/4fc05a5577a852eaa23ed.jpg https://telegra.ph/file/0366f0ad5dc81360c1ba0.jpg')).split()
+PICS = (environ.get('PICS', 'https://telegra.ph/file/f1975b714219a255e2ec3.jpg https://telegra.ph/file/f0d55be78bfaed1c1ab97.jpg https://telegra.ph/file/0590e10654edddf350f36.jpg')).split()
 NOR_IMG = (environ.get('NOR_IMG', 'https://telegra.ph/file/46443096bc6895c74a716.jpg https://telegra.ph/file/225f3f15a9e3230188811.jpg https://telegra.ph/file/703c3040bcd811991aae5.jpg')).split()
 NEWGRP = environ.get("NEWGRP", "https://telegra.ph/file/732a9f89be5a9cd63289b.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/f7f2a532fe4b990044507.mp4")
@@ -49,7 +49,7 @@ REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://api:api@cluster0.30ippsn.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://rajbot:pass@cluster0.kgciulo.mongodb.net/?retryWrites=true&w=majority")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
@@ -85,8 +85,8 @@ DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in enviro
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "False")), False)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+4nzja42ELQwzOWVl')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/New_Moviee_hindi')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/filmy_fundas')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/Funda_More')
 MSG_ALRT = environ.get('MSG_ALRT', 'Piracy Is Crime')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001915216681'))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/filmy_fundas')
