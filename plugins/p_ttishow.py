@@ -288,8 +288,6 @@ async def get_ststs(bot, message):
     reply_markup = InlineKeyboardMarkup(buttons)
     kdbotz = await message.reply('Fetching stats..')
     uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
-    total, used, free = shutil.disk_usage(".")
-    uptime = get_readable_time(delta.seconds)
     ram = psutil.virtual_memory().percent
     cpu = psutil.cpu_percent()
     total_users = await db.total_users_count()
