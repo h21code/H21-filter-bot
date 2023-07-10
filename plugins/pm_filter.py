@@ -317,7 +317,7 @@ async def advantage_spoll_choker(bot, query):
                
            
 @Client.on_callback_query(filters.regex(r"^languages#"))
-async def languages_cb_handler(client: Client, query: CallbackQuery):
+async def languages_cb_handler(bot, query):
     _, user, lang = query.data.split('#')
     if int(query.from_user.id) not in [query.message.reply_to_message.from_user.id, 0]:
         return await query.answer(
