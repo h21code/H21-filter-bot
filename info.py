@@ -65,6 +65,10 @@ COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
 #Downloader
 DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
+#AI
+AI = is_enabled((environ.get("AI","True")), False)
+OPENAI_API = environ.get("OPENAI_API","")
+LAZY_AI_LOGS = int(environ.get("LAZY_AI_LOGS",""))
 
 # FSUB
 auth_channel = environ.get('AUTH_CHANNEL')
