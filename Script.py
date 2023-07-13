@@ -1,23 +1,23 @@
 class script(object):
     START_TXT = """
-<b>ʜᴇʏ, {}
+<b>HEY 👋, {}
 
-Ｉ ＡＭ Ａ ＰＯＷＥＲＦＵＬ •ＡＵＴＯＦＩＬＴＥＲ• + ＭＡＮＮＵＡＬＦＩＬＴＥＲ + ꜰɪʟᴇsᴛᴏʀᴇ ʙᴏᴛ.
+I AM A POWERFUL •AUTOFILTER• + MANNUALFILTER+ FILESTORE BOT.
 
 ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ !!
 </b>"""
     
     STARTER_TXT = """
-<b>ʜᴇʟʟᴏ {}
+<b> HELLO {}
 
-ᴛʜɪs ɪs ᴀ ᴘʀᴏ ᴍᴏᴠɪᴇs ᴀᴜᴛᴏꜰɪʟᴛᴇʀ-ʙᴏᴛ ᴡɪᴛʜ 4ɢʙ+ ᴍᴇᴅɪᴀ ꜰɪʟᴇs sᴜᴘᴘᴏʀᴛ.
+THIS IS A AUTOFILTER MOVIES AUTOFILTER BOT WITH 4M+ FILES.
 
 ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴ.</b>"""
     
     HELPER_TXT = """
-<b>ʜᴇy {}
+<b> HEY {}
 
-ʜᴇʀᴇ ɪꜱ ᴛʜᴇ ʜᴇʟᴩ ꜰᴏʀ ᴍy ᴄᴏᴍᴍᴀɴᴅꜱ.</b>"""
+CLICK ɪꜱ ᴛʜᴇ ʜᴇʟᴩ ꜰᴏʀ ᴍy ᴄᴏᴍᴍᴀɴᴅꜱ.</b>"""
     HELP_TXT = """<b>
 Hᴇʏ {}
 
