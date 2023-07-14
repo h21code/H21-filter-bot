@@ -334,6 +334,7 @@ coммand and υѕeѕ
 ┏🕵️ ᴀsᴋᴇᴅ ʙʏ:- {}
 ┣🔆 ᴘᴏᴡᴇʀᴇᴅ ʙʏ:- <a href='https://t.me/filmy_fundas'>BOT</a> 
 ┗🗃 ᴛᴏᴛᴀʟ ꜰɪʟᴇs:-{}
+TIME : {}
 
 ❇️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {}</b>"""
     
