@@ -135,6 +135,7 @@ async def next_page(bot, query):
                 for file in files
             ]
         else:
+            for file in files
             btn = f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
            # btn = [
           #      [
@@ -146,7 +147,6 @@ async def next_page(bot, query):
                    #     callback_data=f'files_#{file.file_id}',
                   #  ),
                # ]
-            for file in files
            # ]
     try:
         if settings['auto_delete']:
