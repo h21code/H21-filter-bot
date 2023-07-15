@@ -146,7 +146,7 @@ async def next_page(bot, query):
                    #     callback_data=f'files_#{file.file_id}',
                   #  ),
                # ]
-                for file in files
+            for file in files
            # ]
     try:
         if settings['auto_delete']:
