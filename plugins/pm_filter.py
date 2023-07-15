@@ -147,6 +147,9 @@ async def next_page(bot, query):
                # ]
                   # for file in files
            # ]
+
+        else:
+        btn = []
     try:
         if settings['auto_delete']:
             btn.insert(0, 
