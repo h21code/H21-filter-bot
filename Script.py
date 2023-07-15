@@ -332,9 +332,8 @@ coммand and υѕeѕ
 <b>🎪 ᴛɪᴛɪʟᴇ:- {}
 
 ┏🕵️ ᴀsᴋᴇᴅ ʙʏ:- {}
-┣🔆 ᴘᴏᴡᴇʀᴇᴅ ʙʏ:- <a href='https://t.me/filmy_fundas'>BOT</a> 
+┣🔆 ᴘᴏᴡᴇʀᴇᴅ ʙʏ:- <a href='https://t.me/mallufiles'>BOT</a> 
 ┗🗃 ᴛᴏᴛᴀʟ ꜰɪʟᴇs:-{}
-TIME : {}
 
 ❇️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {}</b>"""
     
