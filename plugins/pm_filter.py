@@ -130,11 +130,14 @@ async def next_page(bot, query):
             ]
     else:
         if settings['button']:
+            max_width = 20
+            wrapped_text = textwrap.wrap(f"▫️{get_size(file.file_size)}⊳{file.file_name}", max_width)
+            wrapped_text = "\n".join(wrapped_text)
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"▫️ {get_size(file.file_size)} ⊳ {file.file_name}", callback_data=f'files#{file.file_id}'
-                    ),
+                        text=wrapped_text, callback_data=f'{pre}#{file.file_id}'
+                   ),
                 ]
                 for file in files
             ]
