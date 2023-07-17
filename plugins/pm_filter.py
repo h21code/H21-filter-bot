@@ -4,6 +4,7 @@ import re
 import ast
 import math
 import random
+import textwrap
 lock = asyncio.Lock()
 
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
@@ -103,11 +104,14 @@ async def next_page(bot, query):
         ENABLE_SHORTLINK = False
     if ENABLE_SHORTLINK == True:
         if settings['button']:
+            max_width = 20
+            wrapped_text = textwrap.wrap(f"▫️{get_size(file.file_size)}⊳{file.file_name}", max_width)
+            wrapped_text = "\n".join(wrapped_text)
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"▫️ {get_size(file.file_size)} ⊳ {file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-                    ),
+                        text=wrapped_text, callback_data=f'{pre}#{file.file_id}'
+                   ),
                 ]
                 for file in files
             ]
