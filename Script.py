@@ -1,11 +1,11 @@
 class script(object):
     START_TXT = """
-<b>HEY 👋, {}
+<b>HEY 👋 {} Welcome to the Movie Search Bot! 🔍</b>
 
-I AM A POWERFUL •AUTOFILTER• + MANNUALFILTER+ FILESTORE BOT.
+Looking to download your favorite movies? You're in luck! With this bot, you can easily search and download movies from a vast collection. Simply type in the name of a movie, and I'll provide you with the download links.
 
-ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ !!
-</b>"""
+😺 Please remember to use this bot responsibly and respect copyright laws. Now, sit back, relax, and let's start your cinematic adventure!"
+"""
     
     STARTER_TXT = """
 <b> HELLO {}
