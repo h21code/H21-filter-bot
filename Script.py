@@ -9,11 +9,14 @@ Looking to download your favorite movies? You're in luck! With this bot, you can
 """
     
     STARTER_TXT = """
-<b> HELLO {}
+<b> Hello {}
 
-THIS IS A AUTOFILTER MOVIES AUTOFILTER BOT WITH 4M+ FILES.
+Ready to bring the magic of movies to your screen? Look no further! This bot is your gateway to download and enjoy a wide selection of movies.
+Just let me know the title of the movie you're interested in, and I'll provide you the download links. From 🤜 action-packed blockbusters to 🥰 heartwarming dramas, we've got you covered! </b>
+Just Add Me To The Group With Admin Permission.
 
-ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴ.</b>"""
+ 𝗠𝗔𝗜𝗡𝗧𝗔𝗜𝗡𝗘𝗗 𝗕𝗬 : <a href='https://telegram.me/mallufiles'>𝙈𝘼𝙇𝙇𝙐𝙁𝙄𝙇𝙀𝙎</a>
+"""
     
     HELPER_TXT = """
 <b> HEY {}
