@@ -1,6 +1,7 @@
 class script(object):
     START_TXT = """
-<b>HEY 👋 {} Welcome to the Movie Search Bot! 🔍</b>
+<b>Hey 👋 {} 
+Welcome to the Movie Search Bot! 🔍</b>
 
 Looking to download your favorite movies? You're in luck! With this bot, you can easily search and download movies from a vast collection. Simply type in the name of a movie, and I'll provide you with the download links.
 
