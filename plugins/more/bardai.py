@@ -47,81 +47,59 @@ async def reply_info(client, message):
     result_caption = result(api_response, user, query)
     messages = split_long_message(result_caption, MAX_MESSAGE_LENGTH)
     
-    for idx, message_text in enumerate(messages):
-        if idx == 0:
-            # Send the first message with the 16:9 ratio photo
-            photo_url = "https://telegra.ph/file/988ba355dd1e700a87e8b.jpg"  # Replace with your 16:9 ratio photo URL
-            await message.reply_photo(
-                photo=photo_url,
-                caption=message_text,
-                reply_markup=BUTTONS if idx == len(messages) - 1 else None,
-                quote=True if idx == 0 else False
-            )
-        else:
-            # Send subsequent messages as text messages
-            await message.reply_text(
-                text=message_text,
-                reply_markup=BUTTONS if idx == len(messages) - 1 else None,
-                quote=False
-            )
+    if len(messages) > 1:
+        await send_paginated_message(message, messages)
+    else:
+        await message.reply_photo(
+            photo="https://telegra.ph/file/988ba355dd1e700a87e8b.jpg",  # Replace with your 16:9 ratio photo URL
+            caption=messages[0],
+            reply_markup=BUTTONS,
+            quote=True
+        )
+
+async def send_paginated_message(message, messages):
+    current_page = 0
+    max_page = len(messages) - 1
+    
+    await message.reply_photo(
+        photo="https://example.com/your_16_9_ratio_photo.jpg",  # Replace with your 16:9 ratio photo URL
+        caption=messages[current_page],
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Previous Page", callback_data=f'prev_page'),
+                    InlineKeyboardButton("Next Page", callback_data=f'next_page')
+                ],
+                [BUTTONS.inline_keyboard[0]]  # Close button
+            ]
+        ),
+        quote=True
+    )
 
 @Client.on_callback_query()
 async def handle_button(client, callback_query):
-    data = callback_query.data.split('_')
-    page_action = data[0]
-    page_idx = int(data[1])
-
-    # Fetch the original message
+    data = callback_query.data
     original_message = callback_query.message
 
-    # Delete the current (button-triggering) message
-    await callback_query.message.delete()
+    if data == 'next_page' or data == 'prev_page':
+        # Get the current page index from the caption
+        current_page = int(original_message.caption.split('\n\n', 1)[0].split(': ')[1])
+        new_page = current_page + 1 if data == 'next_page' else current_page - 1
 
-    # Get the user's username or first name if no username is available
-    user = callback_query.from_user.username or callback_query.from_user.first_name
-
-    # Get the original query from the message caption
-    query = original_message.caption.split('\n\n', 2)[1][9:]
-
-    # Make the request to the new API and get the JSON response
-    url = API + requote_uri(query.lower())
-    api_response = requests.get(url).json()
-    
-    # Get the full result caption
-    result_caption = result(api_response, user, query)
-
-    # Split the caption into pages
-    messages = split_long_message(result_caption, MAX_MESSAGE_LENGTH)
-    
-    # Get the target page index
-    target_page_idx = None
-    if page_action == 'next_page':
-        target_page_idx = page_idx
-    elif page_action == 'prev_page':
-        target_page_idx = page_idx
-    
-    # Find the target page and send it as a new message
-    if target_page_idx is not None and target_page_idx >= 0 and target_page_idx < len(messages):
-        target_message_text = messages[target_page_idx]
-        buttons = InlineKeyboardMarkup()
-        if len(messages) > 1:
-            if target_page_idx == 0:
-                buttons.row(InlineKeyboardButton("Next Page", callback_data=f'next_page_{target_page_idx + 1}'))
-            elif target_page_idx == len(messages) - 1:
-                buttons.row(InlineKeyboardButton("Previous Page", callback_data=f'prev_page_{target_page_idx - 1}'))
-            else:
-                buttons.row(
-                    InlineKeyboardButton("Previous Page", callback_data=f'prev_page_{target_page_idx - 1}'),
-                    InlineKeyboardButton("Next Page", callback_data=f'next_page_{target_page_idx + 1}')
+        if 0 <= new_page < len(messages):
+            # Update the caption with the new page content
+            await original_message.edit_caption(
+                caption=messages[new_page],
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("Previous Page", callback_data=f'prev_page'),
+                            InlineKeyboardButton("Next Page", callback_data=f'next_page')
+                        ],
+                        [BUTTONS.inline_keyboard[0]]  # Close button
+                    ]
                 )
-        else:
-            buttons = BUTTONS
-
-        await original_message.reply_text(
-            text=target_message_text,
-            reply_markup=buttons,
-            quote=True
-        )
+            )
 
 @Client.on_callback_query(filters.regex('^close_data$'))
 async def close_data(client, callback_query):
