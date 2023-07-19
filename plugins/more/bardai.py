@@ -3,6 +3,7 @@ import requests
 from requests.utils import requote_uri
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import json
 
 API = "https://api.safone.me/bard?message="
 MAX_MESSAGE_LENGTH = 4096  # Telegram message length limit
@@ -40,8 +41,13 @@ async def reply_info(client, message):
     
     # Make the request to the new API and get the JSON response
     url = API + requote_uri(query.lower())
-    api_response = requests.get(url).json()
-    
+    response = requests.get(url)
+    try:
+        api_response = response.json()
+    except json.JSONDecodeError as e:
+        print(f"Failed to decode JSON: {e}")
+        return
+
     # Get the user's username or first name if no username is available
     user = message.from_user.username or message.from_user.first_name
     
