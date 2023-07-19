@@ -17,7 +17,7 @@ def download_instagram_video(url):
         print("Error while downloading the video:", e)
     return None
 
-@app.on_message(filters.command("insta", prefixes="/") & filters.regex(r'https?://(?:www\.)?instagram\.com/.*'))
+@Client.on_message(filters.command("insta", prefixes="/") & filters.regex(r'https?://(?:www\.)?instagram\.com/.*'))
 async def reply_with_instagram_video(client, message):
     url = message.text.split(None, 1)[1]
     video_data = download_instagram_video(url)
@@ -33,7 +33,7 @@ async def reply_with_instagram_video(client, message):
     else:
         await message.reply_text("Error while downloading the video.")
 
-@app.on_message(filters.command("start", prefixes="/"))
+@Client.on_message(filters.command("insta1", prefixes="/"))
 async def start_command(client, message):
     await message.reply_text("Send an Instagram post URL after /insta command to download the video.")
 
