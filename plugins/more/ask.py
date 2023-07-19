@@ -21,7 +21,7 @@ def result(query):
     except Exception as error:
         return str(error)
 
-@Client.on_message(filters.command("search"))
+@Client.on_message(filters.command("ask"))
 async def reply_info(client, message):
     query = message.text.split(None, 1)[1]
     result_content = result(query)
