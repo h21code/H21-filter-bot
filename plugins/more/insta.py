@@ -1,5 +1,6 @@
 import os
 import requests
+import instaloader
 from pyrogram import Client, filters
 
 DOWNLOAD_FOLDER = 'downloads/'  # Make sure the 'downloads' folder exists
