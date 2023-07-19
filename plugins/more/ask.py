@@ -15,7 +15,7 @@ def result(query):
         response_data = r.json()
 
         # Extracting information from the JSON response
-        answer = response_data.get('answer', "No results found.")
+        answer = response_data.get('answer', "No Answer Found.")
 
         return answer
     except Exception as error:
@@ -31,7 +31,7 @@ async def reply_info(client, message):
         quote=True
     )
 
-    log_message = f"--𝗦𝗲𝗮𝗿𝗰𝗵--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
+    log_message = f"--𝗔𝘀𝗸𝗲𝗱--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇsᴛɪᴏɴ : {query}"
     await client.send_message(LOG_CHANNEL, log_message)
 
 @Client.on_callback_query(filters.regex('^close_data'))
