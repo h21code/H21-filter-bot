@@ -20,7 +20,7 @@ async def reply_info(client, message):
 
 def result(country_name):
     try:
-        r = requests.get(API + requote_uri(query.lower()) + &limit=1)
+        r = requests.get(API + requote_uri(query.lower())) + "&limit=1"
         info = r.json()
         title = info['title']
         description = info['description']
