@@ -82,12 +82,17 @@ async def send_paginated_message(message, messages):
         end_idx = min((current_page + 1) * BUTTONS_PER_PAGE, len(messages))
         
         caption = "\n\n".join(messages[start_idx:end_idx])
-        await message.reply_photo(
-            photo="https://telegra.ph/file/988ba355dd1e700a87e8b.jpg",  # Replace with your 16:9 ratio photo URL
-            caption=caption,
-            reply_markup=InlineKeyboardMarkup([buttons]),
-            quote=True
-        )
+        if len(caption) <= MAX_MESSAGE_LENGTH:
+            # If the caption length is within the limit, send the message
+            await message.reply_photo(
+                photo="https://telegra.ph/file/988ba355dd1e700a87e8b.jpg",  # Replace with your 16:9 ratio photo URL
+                caption=caption,
+                reply_markup=InlineKeyboardMarkup([buttons]),
+                quote=True
+            )
+        else:
+            # If the caption length exceeds the limit, break the loop
+            break
         
         if current_page == max_page:
             break
