@@ -12,15 +12,24 @@ def result(query):
     try:
         url = API + requote_uri(query.lower()) + "&limit=1"
         r = requests.get(url)
-        info = r.json()
-        title = info['title']
-        description = info['description']
-        link = info['link']
-        result = f"""--**Search Result**--
+        response_data = r.json()
+
+        # Extracting information from the API response
+        results = response_data['results']
+        if results:
+            result_data = results[0]
+            title = result_data['title']
+            description = result_data['description']
+            link = result_data['link']
+
+            result_str = f"""--**Search Result**--
 ᚛› Title : `{title}`
 ᚛› Description : `{description}`
 ᚛› Link : `{link}`"""
-        return result
+        else:
+            result_str = "No results found."
+
+        return result_str
     except Exception as error:
         return str(error)
 
