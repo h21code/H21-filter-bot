@@ -46,7 +46,7 @@ async def reply_info(client, message):
     )
 
 log_message = f"𝗦𝗲𝗮𝗿𝗰𝗵 : User {message.from_user.mention} searched: {query}"
-    await client.send_message(LOG_CHANNEL, log_message)
+    await client.send_message(LOG_CHANNEL,log_message)
 
 @Client.on_callback_query(filters.regex('^close_data$'))
 async def close_data(client, callback_query):
