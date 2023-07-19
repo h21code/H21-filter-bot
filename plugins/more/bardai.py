@@ -6,6 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API = "https://api.safone.me/bard?message="
 MAX_MESSAGE_LENGTH = 4096  # Telegram message length limit
+BUTTONS_PER_PAGE = 2  # Number of pagination buttons per page
 
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("𝗖𝗟𝗢𝗦𝗘", callback_data='close_data')]])
 
@@ -61,20 +62,31 @@ async def send_paginated_message(message, messages):
     current_page = 0
     max_page = len(messages) - 1
     
-    await message.reply_photo(
-        photo="https://example.com/your_16_9_ratio_photo.jpg",  # Replace with your 16:9 ratio photo URL
-        caption=messages[current_page],
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("Previous Page", callback_data=f'prev_page'),
-                    InlineKeyboardButton("Next Page", callback_data=f'next_page')
-                ],
-                [BUTTONS.inline_keyboard[0]]  # Close button
-            ]
-        ),
-        quote=True
-    )
+    while True:
+        buttons = []
+        if current_page > 0:
+            buttons.append(InlineKeyboardButton("Previous Page", callback_data=f'prev_page'))
+        if current_page < max_page:
+            buttons.append(InlineKeyboardButton("Next Page", callback_data=f'next_page'))
+        
+        # Add the close button to the last row
+        buttons.append(BUTTONS.inline_keyboard[0])
+        
+        start_idx = current_page * BUTTONS_PER_PAGE
+        end_idx = min((current_page + 1) * BUTTONS_PER_PAGE, len(messages))
+        
+        caption = "\n\n".join(messages[start_idx:end_idx])
+        await message.reply_photo(
+            photo="https://telegra.ph/file/988ba355dd1e700a87e8b.jpg",  # Replace with your 16:9 ratio photo URL
+            caption=caption,
+            reply_markup=InlineKeyboardMarkup([buttons]),
+            quote=True
+        )
+        
+        if current_page == max_page:
+            break
+        
+        current_page += 1
 
 @Client.on_callback_query()
 async def handle_button(client, callback_query):
@@ -87,9 +99,10 @@ async def handle_button(client, callback_query):
         new_page = current_page + 1 if data == 'next_page' else current_page - 1
 
         if 0 <= new_page < len(messages):
-            # Update the caption with the new page content
+            # Edit the existing message's caption to show the new page content
+            caption = "\n\n".join(messages[new_page * BUTTONS_PER_PAGE:(new_page + 1) * BUTTONS_PER_PAGE])
             await original_message.edit_caption(
-                caption=messages[new_page],
+                caption=f"Page: {new_page + 1}\n\n{caption}",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
