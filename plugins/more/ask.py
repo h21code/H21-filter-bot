@@ -15,24 +15,23 @@ def result(query):
         response_data = r.json()
 
         # Extracting information from the JSON response
-        answer = response_data.get('answer', "No Answer Found.")
+        answer = response_data.get('answer', "No results found.")
 
         return answer
     except Exception as error:
         return str(error)
 
-@Client.on_message(filters.command("ask"))
+@Client.on_message(filters.command("search"))
 async def reply_info(client, message):
     query = message.text.split(None, 1)[1]
-    result_caption = result(query)
-    await message.reply_photo(
-        photo="https://telegra.ph/file/a4545775e137feda80612.jpg",
-        caption=result_caption,
+    result_content = result(query)
+    await message.reply_text(
+        text=result_content,
         reply_markup=BUTTONS,
         quote=True
     )
 
-    log_message = f"--𝗔𝘀𝗸𝗲𝗱--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇsᴛɪᴏɴ : {query}"
+    log_message = f"--𝗦𝗲𝗮𝗿𝗰𝗵--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
     await client.send_message(LOG_CHANNEL, log_message)
 
 @Client.on_callback_query(filters.regex('^close_data'))
