@@ -20,6 +20,11 @@ def result(api_response, user, query):
         # Adding user and query information to the result
         result_str = f"👤 Requested by: {user}\n\n🔎 Query: {query}\n\n" + result_str
 
+        # Limit the caption length to avoid MediaCaptionTooLong error
+        max_caption_length = 1024  # Set the desired maximum length for the caption
+        if len(result_str) > max_caption_length:
+            result_str = result_str[:max_caption_length]
+
         return result_str
     except Exception as error:
         return str(error)
