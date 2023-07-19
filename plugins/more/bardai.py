@@ -48,25 +48,22 @@ async def reply_info(client, message):
     messages = split_long_message(result_caption, MAX_MESSAGE_LENGTH)
     
     for idx, message_text in enumerate(messages):
-        # Add pagination buttons
-        if len(messages) > 1:
-            if idx == 0:
-                buttons = InlineKeyboardMarkup([[InlineKeyboardButton("Next Page", callback_data=f'next_page_{idx + 1}')]])
-            elif idx == len(messages) - 1:
-                buttons = InlineKeyboardMarkup([[InlineKeyboardButton("Previous Page", callback_data=f'prev_page_{idx - 1}')]])
-            else:
-                buttons = InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Previous Page", callback_data=f'prev_page_{idx - 1}'),
-                     InlineKeyboardButton("Next Page", callback_data=f'next_page_{idx + 1}')]
-                ])
+        if idx == 0:
+            # Send the first message with the 16:9 ratio photo
+            photo_url = "https://telegra.ph/file/988ba355dd1e700a87e8b.jpg"  # Replace with your 16:9 ratio photo URL
+            await message.reply_photo(
+                photo=photo_url,
+                caption=message_text,
+                reply_markup=BUTTONS if idx == len(messages) - 1 else None,
+                quote=True if idx == 0 else False
+            )
         else:
-            buttons = BUTTONS
-        
-        await message.reply_text(
-            text=message_text,
-            reply_markup=buttons,
-            quote=True if idx == 0 else False  # Quote the first message only
-        )
+            # Send subsequent messages as text messages
+            await message.reply_text(
+                text=message_text,
+                reply_markup=BUTTONS if idx == len(messages) - 1 else None,
+                quote=False
+            )
 
 @Client.on_callback_query()
 async def handle_button(client, callback_query):
