@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API = "https://api.safone.me/google?query="
 
-BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("𝙲𝙻𝙾𝚂𝙴", callback_data='close_data')]])
+BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("𝗖𝗟𝗢𝗦𝗘", callback_data='close_data')]])
 
 def result(query):
     try:
@@ -23,9 +23,9 @@ def result(query):
             link = result_data['link']
 
             result_str = f"""--**Search Result**--
-᚛› Title : `{title}`
-᚛› Description : `{description}`
-᚛› Link : `{link}`"""
+ 𝗧𝗶𝘁𝗹𝗲 : </b>`{title}`<\b>
+ 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : `{description}`
+ 𝗟𝗶𝗻𝗸 : <a href='{link}'>`{link}`<\a>"""
         else:
             result_str = "No results found."
 
@@ -36,8 +36,14 @@ def result(query):
 @Client.on_message(filters.command("search"))
 async def reply_info(client, message):
     query = message.text.split(None, 1)[1]
+    result_caption = result(query)
     await message.reply_photo(
         photo="https://telegra.ph/file/51fdcccb41510ff8af8b1.jpg",
-        caption=result(query),
+        caption=result_caption,
+        reply_markup=BUTTONS,
         quote=True
     )
+
+@Client.on_callback_query(filters.regex('^close_data$'))
+async def close_data(client, callback_query):
+    await callback_query.message.delete()
