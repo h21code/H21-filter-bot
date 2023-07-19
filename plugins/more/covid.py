@@ -24,9 +24,11 @@ def result(query):
             link = result_data['link']
 
             result_str = f"""--**🔍 Search Result**--
- 𝗧𝗶𝘁𝗹𝗲 : `</b>{title}<\b>`
+ 𝗧𝗶𝘁𝗹𝗲 : <code>{title}</code>
+ 
  𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : `{description}`
- 𝗟𝗶𝗻𝗸 : <a href='{link}'>{link}<\a>"""
+ 
+ 𝗟𝗶𝗻𝗸 : <a href={link}>{link}</a>"""
         else:
             result_str = "No results found."
 
@@ -45,7 +47,7 @@ async def reply_info(client, message):
         quote=True
     )
 
-    log_message = f"𝗦𝗲𝗮𝗿𝗰𝗵 : User {message.from_user.mention} searched: {query}"
+    log_message = f"--𝗦𝗲𝗮𝗿𝗰𝗵--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
     await client.send_message(LOG_CHANNEL, log_message)
 
 @Client.on_callback_query(filters.regex('^close_data$'))
