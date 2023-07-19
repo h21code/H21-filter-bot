@@ -22,7 +22,7 @@ def result(query):
     try:
         url = API + requote_uri(query.lower()) + "&limit=1"
         r = requests.get(url)
-        info = r.json()
+        info = r()
         title = info['title']
         description = info['description']
         link = info['link']
