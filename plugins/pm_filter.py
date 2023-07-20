@@ -484,12 +484,11 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             )
 
     btn.insert(0, [
-        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Fɪʟᴇs Tᴏ PM !", callback_data=f"send_fall#files#{offset}")
+        InlineKeyboardButton("📮 SEND ALL FILES TO PM ", callback_data=f"send_fall#files#{offset}")
     ])
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
-        req = message.from_user.id if message.from_user else 0
         try:
             settings = await get_settings(message.chat.id)
             if settings['max_btn']:
