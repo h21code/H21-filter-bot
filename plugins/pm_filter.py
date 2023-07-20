@@ -486,8 +486,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     btn.insert(0, [
         InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Fɪʟᴇs Tᴏ PM !", callback_data=f"send_fall#files#{offset}")
     ])
-
-     if offset != "":
+    if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
         req = message.from_user.id if message.from_user else 0
@@ -515,7 +514,9 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     else:
         btn.append(
             [InlineKeyboardButton(text="♨️ NO MORE PAGES AVAILABLE ♨️",callback_data="pages")]
-                                     )
+                )
+
+
 
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
