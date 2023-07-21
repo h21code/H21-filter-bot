@@ -9,6 +9,21 @@ TMDB_API_KEY = 'b3d10dab8e82525e3a2ed8ed8bc38874'
 TMDB_API_URL = f'https://api.themoviedb.org/3'
 
 
+# Function to search for movies or TV series using the TMDb API
+def search_media(query, media_type):
+    url = f"{TMDB_API_URL}/search/{media_type}"
+    params = {
+        "api_key": TMDB_API_KEY,
+        "query": query,
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        results = data.get('results', [])
+        return results
+    return []
+
+
 # Function to get movie and TV series recommendations from TMDb API
 def get_media_recommendations(media_id, media_type):
     url = f"{TMDB_API_URL}/{media_type}/{media_id}/recommendations"
@@ -29,57 +44,32 @@ def media_recommendation(_, message):
     query = message.text.strip()[11:]  # Remove '/recommend' from the query
     if query:
         # Search for movies to get the media ID
-        url = f"{TMDB_API_URL}/search/movie"
-        params = {
-            "api_key": TMDB_API_KEY,
-            "query": query,
-        }
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            results = data.get('results', [])
-            if results:
-                media_id = results[0]['id']
-                media_type = 'movie'
-            else:
-                # Search for TV series to get the media ID
-                url = f"{TMDB_API_URL}/search/tv"
-                response = requests.get(url, params=params)
-                if response.status_code == 200:
-                    data = response.json()
-                    results = data.get('results', [])
-                    if results:
-                        media_id = results[0]['id']
-                        media_type = 'tv'
-                    else:
-                        media_id = None
-                        media_type = None
-            if media_id and media_type:
-                # Get movie and TV series recommendations from TMDb API
-                media_results = get_media_recommendations(media_id, media_type)
+        movie_results = search_media(query, 'movie')
 
-                if media_results:
-                    # Create a list of buttons with recommended movie/series names
-                    buttons = [
-                        [
-                            InlineKeyboardButton(media['title'] if media_type == 'movie' else media['name'], callback_data=str(media['id']))
-                        ]
-                        for media in media_results
-                    ]
+        # Search for TV series to get the media ID
+        series_results = search_media(query, 'tv')
 
-                    # Add a "Close" button to the list of buttons
-                    buttons.append([InlineKeyboardButton("Close", callback_data="close")])
+        # Combine movie and TV series search results
+        media_results = movie_results + series_results
 
-                    # Create an InlineKeyboardMarkup with the buttons
-                    keyboard = InlineKeyboardMarkup(buttons)
+        if media_results:
+            # Create a list of buttons with recommended movie/series names
+            buttons = [
+                [
+                    InlineKeyboardButton(media['title'] if media['media_type'] == 'movie' else media['name'], callback_data=str(media['id']))
+                ]
+                for media in media_results
+            ]
 
-                    message.reply_text("Choose a movie/series:", reply_markup=keyboard)
-                else:
-                    message.reply_text("Sorry, I couldn't find any movie or TV series recommendations for that query.")
-            else:
-                message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
+            # Add a "Close" button to the list of buttons
+            buttons.append([InlineKeyboardButton("Close", callback_data="close")])
+
+            # Create an InlineKeyboardMarkup with the buttons
+            keyboard = InlineKeyboardMarkup(buttons)
+
+            message.reply_text("Choose a movie/series:", reply_markup=keyboard)
         else:
-            message.reply_text("Sorry, an error occurred while searching for the movie/series.")
+            message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
     else:
         message.reply_text("Please send the name of a movie or TV series along with the /recommend tag to get recommendations!")
 
