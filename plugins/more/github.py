@@ -1,7 +1,7 @@
 import os
 import requests
 from requests.utils import requote_uri
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API = "https://api.safone.me/github?query="
@@ -20,27 +20,31 @@ def result(query):
         if results:
             result_data = results[0]
             name = result_data['name']
-            description = result_data['description'] or 'N/A'
+            description = result_data['description']
             url = result_data['htmlUrl']
             stargazers_count = result_data['stargazersCount']
 
             result_str = f"""
-<b>Name:</b> <code>{name}</code>
-<b>Description:</b> {description}
-<b>GitHub URL:</b> <a href="{url}">{url}</a>
-<b>⭐️ Stargazers:</b> {stargazers_count}"""
+            
+ 𝗡𝗮𝗺𝗲 : <code>{name}</code>
+ 
+ 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : `{description}`
+ 
+ 𝗚𝗶𝘁𝗛𝘂𝗯 𝗨𝗥𝗟 : <a href={url}>{url}</a>
+ 
+ 𝗦𝘁𝗮𝗿𝘀 : {stargazers_count}"""
         else:
             result_str = "😿 No results found."
 
         return result_str
     except requests.exceptions.HTTPError as http_error:
-        return f"<b>HTTP Error:</b> {http_error}"
+        return f"HTTP Error: {http_error}"
     except requests.exceptions.RequestException as request_error:
-        return f"<b>Request Error:</b> {request_error}"
+        return f"Request Error: {request_error}"
     except KeyError:
-        return "<b>Error:</b> Invalid API response."
+        return "Error: Invalid API response."
     except Exception as error:
-        return f"<b>Error:</b> {error}"
+        return f"Error: {error}"
 
 @Client.on_message(filters.command("git"))
 async def reply_info(client, message):
@@ -49,9 +53,10 @@ async def reply_info(client, message):
     await message.reply_text(
         result_caption,
         reply_markup=BUTTONS,
-        quote=True,
-        parse_mode="HTML"  # To render the text as HTML for bold and links
+        quote=True
     )
+
+
 
 @Client.on_callback_query(filters.regex('^close_data'))
 async def close_data(client, callback_query):
