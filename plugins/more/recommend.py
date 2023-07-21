@@ -10,8 +10,8 @@ TMDB_API_URL = f'https://api.themoviedb.org/3'
 
 
 # Function to search for movies or TV series using the TMDb API
-def search_media(query, media_type):
-    url = f"{TMDB_API_URL}/search/{media_type}"
+def search_media(query):
+    url = f"{TMDB_API_URL}/search/multi"
     params = {
         "api_key": TMDB_API_KEY,
         "query": query,
@@ -43,31 +43,28 @@ def get_media_recommendations(media_id, media_type):
 def media_recommendation(_, message):
     query = message.text.strip()[11:]  # Remove '/recommend' from the query
     if query:
-        # Search for movies to get the media ID
-        movie_results = search_media(query, 'movie')
-
-        # Search for TV series to get the media ID
-        series_results = search_media(query, 'tv')
-
-        # Combine movie and TV series search results
-        media_results = movie_results + series_results
+        # Search for movies and TV series
+        media_results = search_media(query)
 
         if media_results:
-            # Create a list of buttons with recommended movie/series names
-            buttons = [
-                [
-                    InlineKeyboardButton(media['title'] if media['media_type'] == 'movie' else media['name'], callback_data=str(media['id']))
+            # Filter only movies and TV series
+            media_results = [media for media in media_results if media['media_type'] in ['movie', 'tv']]
+
+            if media_results:
+                # Create a list of buttons with movie/series names from the search results
+                buttons = [
+                    [
+                        InlineKeyboardButton(media['title'] if media['media_type'] == 'movie' else media['name'], callback_data=str(media['id']))
+                    ]
+                    for media in media_results
                 ]
-                for media in media_results
-            ]
 
-            # Add a "Close" button to the list of buttons
-            buttons.append([InlineKeyboardButton("Close", callback_data="close")])
+                # Create an InlineKeyboardMarkup with the buttons
+                keyboard = InlineKeyboardMarkup(buttons)
 
-            # Create an InlineKeyboardMarkup with the buttons
-            keyboard = InlineKeyboardMarkup(buttons)
-
-            message.reply_text("Choose a movie/series:", reply_markup=keyboard)
+                message.reply_text("Choose a movie/series:", reply_markup=keyboard)
+            else:
+                message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
         else:
             message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
     else:
