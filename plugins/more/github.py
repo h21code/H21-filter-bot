@@ -12,6 +12,7 @@ def result(query):
     try:
         url = API + requote_uri(query.lower()) + "&limit=1"
         r = requests.get(url)
+        r.raise_for_status()  # Raise an exception for HTTP errors
         response_data = r.json()
 
         # Extracting information from the API response
@@ -23,30 +24,33 @@ def result(query):
             url = result_data['htmlUrl']
             stargazers_count = result_data['stargazersCount']
 
-            result_str = f"""--**📦 Repository**--
- ✒️ 𝗡𝗮𝗺𝗲 : <code>{name}</code>
- 
- 🧾 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : `{description}`
- 
- 🔗 𝗟𝗶𝗻𝗸 : <a href={url}>{url}</a>
- 
- ⭐️ 𝗦𝘁𝗮𝗿𝘀 : {stargazers_count}"""
+            result_str = f"""
+<b>Name :</b> <code>{name}</code>
+<b>Description :</b> {description or 'N/A'}
+<b>Link :</b> <a href="{url}">{url}</a>
+<b>Stars :</b> {stargazers_count}"""
         else:
-            result_str = "No results found."
+            result_str = "😿 No results found."
 
         return result_str
+    except requests.exceptions.HTTPError as http_error:
+        return f"<b>HTTP Error:</b> {http_error}"
+    except requests.exceptions.RequestException as request_error:
+        return f"<b>Request Error:</b> {request_error}"
+    except KeyError:
+        return "<b>Error:</b> Invalid API response."
     except Exception as error:
-        return str(error)
+        return f"<b>Error:</b> {error}"
 
 @Client.on_message(filters.command("git"))
 async def reply_info(client, message):
     query = message.text.split(None, 1)[1]
     result_caption = result(query)
-    await message.reply_photo(
-        photo="https://telegra.ph/file/a4545775e137feda80612.jpg",
-        caption=result_caption,
+    await message.reply_text(
+        result_caption,
         reply_markup=BUTTONS,
-        quote=True
+        quote=True,
+        parse_mode="HTML"  # To render the text as HTML for bold and links
     )
 
     
