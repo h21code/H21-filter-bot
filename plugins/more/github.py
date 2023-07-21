@@ -37,7 +37,7 @@ def result(query):
 
         return result_str
     except Exception as error:
-        return f"An error occurred: {str(error)}"
+        return f"😿 No result found!"
 
 @Client.on_message(filters.command("git"))
 async def reply_info(client, message):
