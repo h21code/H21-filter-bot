@@ -43,30 +43,70 @@ def get_media_recommendations(media_id, media_type):
 def media_recommendation(_, message):
     query = message.text.strip()[11:]  # Remove '/recommend' from the query
     if query:
-        # Search for movies and TV series
-        media_results = search_media(query)
+        # Check if the query is a numeric media ID
+        if query.isdigit():
+            # Fetch recommendations directly with the provided media ID
+            media_id = int(query)
+            media_type = 'movie' if media_id < 200000 else 'tv'  # Assume media IDs < 200000 are for movies, otherwise TV series
+            recommendations = get_media_recommendations(media_id, media_type)
 
-        if media_results:
-            # Filter only movies and TV series
-            media_results = [media for media in media_results if media['media_type'] in ['movie', 'tv']]
-
-            if media_results:
-                # Create a list of buttons with movie/series names from the search results
+            if recommendations:
+                # Create a list of buttons with recommended movie/series names
                 buttons = [
                     [
-                        InlineKeyboardButton(media['title'] if media['media_type'] == 'movie' else media['name'], callback_data=str(media['id']))
+                        InlineKeyboardButton(rec['title'] if rec['media_type'] == 'movie' else rec['name'], callback_data=str(rec['id']))
                     ]
-                    for media in media_results
+                    for rec in recommendations
                 ]
+
+                # Add a "Close" button to the list of buttons
+                buttons.append([InlineKeyboardButton("Close", callback_data="close")])
 
                 # Create an InlineKeyboardMarkup with the buttons
                 keyboard = InlineKeyboardMarkup(buttons)
 
                 message.reply_text("Choose a movie/series:", reply_markup=keyboard)
             else:
-                message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
+                message.reply_text("Sorry, I couldn't find any recommendations for that movie or TV series.")
         else:
-            message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
+            # Search for movies and TV series
+            media_results = search_media(query)
+
+            if media_results:
+                # Filter only movies and TV series
+                media_results = [media for media in media_results if media['media_type'] in ['movie', 'tv']]
+
+                if media_results:
+                    # Get the first media from the search results
+                    media = media_results[0]
+                    media_id = media['id']
+                    media_type = media['media_type']
+
+                    # Get movie and TV series recommendations from TMDb API
+                    recommendations = get_media_recommendations(media_id, media_type)
+
+                    if recommendations:
+                        # Create a list of buttons with recommended movie/series names
+                        buttons = [
+                            [
+                                InlineKeyboardButton(rec['title'] if rec['media_type'] == 'movie' else rec['name'], callback_data=str(rec['id']))
+                            ]
+                            for rec in recommendations
+                        ]
+
+                        # Add a "Close" button to the list of buttons
+                        buttons.append([InlineKeyboardButton("Close", callback_data="close")])
+
+                        # Create an InlineKeyboardMarkup with the buttons
+                        keyboard = InlineKeyboardMarkup(buttons)
+
+                        message.reply_text("Choose a movie/series:", reply_markup=keyboard)
+                    else:
+                        message.reply_text("Sorry, I couldn't find any recommendations for that movie or TV series.")
+                else:
+                    message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
+            else:
+                message.reply_text("Sorry, I couldn't find any movie or TV series with that name.")
     else:
         message.reply_text("Please send the name of a movie or TV series along with the /recommend tag to get recommendations!")
 
