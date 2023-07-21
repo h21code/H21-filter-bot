@@ -3,6 +3,7 @@ import requests
 from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import time
 
 # Replace 'YOUR_API_KEY' with your TMDb API key
 TMDB_API_KEY = 'b3d10dab8e82525e3a2ed8ed8bc38874'
@@ -133,11 +134,17 @@ def button_click(_, query):
                 poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
 
                 try:
-                    # Try to send the photo and caption
-                    query.message.reply_photo(photo=poster_url, caption=f"Title: {title}\n\n{overview}")
+                    # Try to send the photo and caption as a document message to trigger auto-delete timer
+                    query.message.reply_document(document=poster_url, caption=f"Title: {title}\n\n{overview}")
                 except Exception as e:
-                    # If there's an error sending the photo, reply with the caption only
+                    # If there's an error sending the document, reply with the caption only
                     query.message.reply_text(f"Title: {title}\n\n{overview}")
+
+                # Sleep for 2 minutes (Telegram auto-deletes the document after 2 minutes)
+                time.sleep(120)
+
+                # Delete the message to clean up the recommendation
+                query.message.delete()
             else:
                 query.message.reply_text("Sorry, couldn't fetch details for this movie/series.")
         else:
