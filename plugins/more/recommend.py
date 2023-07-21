@@ -8,8 +8,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 TMDB_API_KEY = 'b3d10dab8e82525e3a2ed8ed8bc38874'
 TMDB_API_URL = f'https://api.themoviedb.org/3'
 
-app = Client("movie_recommendation_bot")
-
 
 # Function to get movie and TV series recommendations from TMDb API
 def get_media_recommendations(query):
@@ -27,7 +25,7 @@ def get_media_recommendations(query):
 
 
 # Movie and TV series recommendation command handler
-@app.on_message(filters.command("recommend"))
+@client.on_message(filters.command("recommend"))
 def media_recommendation(_, message):
     query = message.text.strip()[10:]  # Remove '/recommend' from the query
     if query:
@@ -57,7 +55,7 @@ def media_recommendation(_, message):
 
 
 # Callback handler for button clicks
-@app.on_callback_query()
+@client.on_callback_query()
 def button_click(_, query):
     media_id = int(query.data)
     url = f"{TMDB_API_URL}/movie/{media_id}"
