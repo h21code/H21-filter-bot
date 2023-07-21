@@ -24,7 +24,7 @@ def result(api_response, user, query):
             content = response_data[0]['content']
             result_str = "\n".join(content)
         else:
-            result_str = "No results found."
+            result_str = "😿 No results found."
 
         # Adding user and query information to the result
         result_str = f"👤 Requested by: {user}\n\n🔎 Query: {query}\n\n" + result_str
@@ -38,7 +38,7 @@ def result(api_response, user, query):
 
         return messages
     except Exception as error:
-        return ["No results found."]
+        return ["😿 No results found."]
 
 @Client.on_message(filters.command("ai"))
 async def reply_info(client, message):
@@ -50,7 +50,7 @@ async def reply_info(client, message):
     user = message.from_user.username or message.from_user.first_name
 
     # Send the "Searching for: (searched query here)" message
-    searching_message = await message.reply_text(f"Searching for: {query}...")
+    searching_message = await message.reply_text(f"✅ Searching for: {query}...")
 
     try:
         # Make the request to the API and get the JSON response
@@ -58,7 +58,7 @@ async def reply_info(client, message):
         api_response = requests.get(url).json()
 
         # Send the "Generating answers for you..." message and wait for 1 second before proceeding
-        await searching_message.edit_text("Searching for: {query}...\n\nGenerating answers for you...")
+        await searching_message.edit_text("✅ Generating answers for you...")
         time.sleep(1)
 
         result_messages = result(api_response, user, query)
@@ -69,10 +69,14 @@ async def reply_info(client, message):
                 reply_markup=BUTTONS,
                 quote=True if idx == 0 else False  # Quote the first message only
             )
+        
+        # Delete the loading message after showing the results
+        await searching_message.delete()
+
     except Exception as e:
-        # If an error occurs, send a "No results found" message
-        await searching_message.delete()  # Delete the "Searching for..." message
-        await message.reply_text("No results found.")
+        # If an error occurs, send a "No results found" message and delete the loading message
+        await searching_message.delete()
+        await message.reply_text("😿 No results found.")
 
 @Client.on_callback_query(filters.regex('^close_data$'))
 async def close_data(client, callback_query):
