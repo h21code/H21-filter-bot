@@ -25,7 +25,7 @@ def get_media_recommendations(query):
 
 
 # Movie and TV series recommendation command handler
-@client.on_message(filters.command("recommend"))
+@Client.on_message(filters.command("recommend"))
 def media_recommendation(_, message):
     query = message.text.strip()[10:]  # Remove '/recommend' from the query
     if query:
@@ -55,7 +55,7 @@ def media_recommendation(_, message):
 
 
 # Callback handler for button clicks
-@client.on_callback_query()
+@Client.on_callback_query()
 def button_click(_, query):
     media_id = int(query.data)
     url = f"{TMDB_API_URL}/movie/{media_id}"
