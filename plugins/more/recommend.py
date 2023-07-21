@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 TMDB_API_KEY = 'b3d10dab8e82525e3a2ed8ed8bc38874'
 TMDB_API_URL = f'https://api.themoviedb.org/3'
 
-
+app = Client("movie_recommendation_bot")
 
 
 # Function to get movie and TV series recommendations from TMDb API
