@@ -1,7 +1,7 @@
 import os
 import requests
 from requests.utils import requote_uri
-from pyrogram import Client, filters, enums
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API = "https://api.safone.me/github?query="
@@ -20,15 +20,15 @@ def result(query):
         if results:
             result_data = results[0]
             name = result_data['name']
-            description = result_data['description']
+            description = result_data['description'] or 'N/A'
             url = result_data['htmlUrl']
             stargazers_count = result_data['stargazersCount']
 
             result_str = f"""
-<b>Name :</b> <code>{name}</code>
-<b>Description :</b> {description or 'N/A'}
-<b>Link :</b> <a href="{url}">{url}</a>
-<b>Stars :</b> {stargazers_count}"""
+<b>Name:</b> <code>{name}</code>
+<b>Description:</b> {description}
+<b>GitHub URL:</b> <a href="{url}">{url}</a>
+<b>⭐️ Stargazers:</b> {stargazers_count}"""
         else:
             result_str = "😿 No results found."
 
@@ -53,7 +53,6 @@ async def reply_info(client, message):
         parse_mode="HTML"  # To render the text as HTML for bold and links
     )
 
-    
 @Client.on_callback_query(filters.regex('^close_data'))
 async def close_data(client, callback_query):
     await callback_query.message.delete()
