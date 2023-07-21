@@ -73,7 +73,6 @@ def media_recommendation(_, message):
         message.reply_text("Please send the name of a movie or TV series along with the /recommend tag to get recommendations!")
 
 
-# Callback handler for button clicks
 @Client.on_callback_query()
 def button_click(_, query):
     if query.data == "close":
@@ -93,10 +92,16 @@ def button_click(_, query):
 
             if title and overview and poster_path:
                 poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
-                response_text = f"Title: {title}\n\n{overview}"
-                query.message.reply_photo(photo=poster_url, caption=response_text)
+
+                try:
+                    # Try to send the photo and caption
+                    query.message.reply_photo(photo=poster_url, caption=f"Title: {title}\n\n{overview}")
+                except Exception as e:
+                    # If there's an error sending the photo, reply with the caption only
+                    query.message.reply_text(f"Title: {title}\n\n{overview}")
             else:
                 query.message.reply_text("Sorry, couldn't fetch details for this movie/series.")
         else:
             query.message.reply_text("Sorry, an error occurred while fetching details for this movie/series.")
 
+# ... (Rest of the code remains the same)
