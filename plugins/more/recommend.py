@@ -55,7 +55,10 @@ def media_recommendation(_, message):
                 # Create a list of buttons with recommended movie/series names
                 buttons = [
                     [
-                        InlineKeyboardButton(rec['title'] if rec['media_type'] == 'movie' else rec['name'], callback_data=str(rec['id']))
+                        InlineKeyboardButton(
+                            rec['title'] if rec['media_type'] == 'movie' else rec['name'],
+                            callback_data=str(rec['id'])  # Correctly set the callback_data to the media ID as a string
+                        )
                     ]
                     for rec in recommendations
                 ]
@@ -90,7 +93,10 @@ def media_recommendation(_, message):
                         # Create a list of buttons with recommended movie/series names
                         buttons = [
                             [
-                                InlineKeyboardButton(rec['title'] if rec['media_type'] == 'movie' else rec['name'], callback_data=str(rec['id']))
+                                InlineKeyboardButton(
+                                    rec['title'] if rec['media_type'] == 'movie' else rec['name'],
+                                    callback_data=str(rec['id'])  # Correctly set the callback_data to the media ID as a string
+                                )
                             ]
                             for rec in recommendations
                         ]
@@ -118,7 +124,7 @@ def button_click(_, query):
     if query.data == "close":
         query.message.delete()
     else:
-        media_id = int(query.data)
+        media_id = int(query.data)  # Convert the correct media ID from string to integer
         url = f"{TMDB_API_URL}/movie/{media_id}"
         params = {
             "api_key": TMDB_API_KEY,
