@@ -2579,7 +2579,7 @@ async def auto_filter(client, msg, spoll=False):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton("🗂 FILES : {total_results}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {str(total_results)}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
@@ -2587,7 +2587,7 @@ async def auto_filter(client, msg, spoll=False):
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton("​🗂 FILES : {total_results}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("​🗂 FILES : {str(total_results)}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
@@ -2599,7 +2599,7 @@ async def auto_filter(client, msg, spoll=False):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton("🗂 FILES : {total_results}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {str(total_results)}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
@@ -2607,7 +2607,7 @@ async def auto_filter(client, msg, spoll=False):
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton("🗂 FILES : {total_results}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {str(total_results)}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
