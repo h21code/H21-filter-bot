@@ -41,7 +41,8 @@ def get_media_recommendations(media_id, media_type):
 
 # Movie and TV series recommendation command handler
 @Client.on_message(filters.command("recommend"))
-def media_recommendation(_, message):
+@Client.on_message(filters.command("recommend"))
+def media_recommendation(client, message):
     query = message.text.strip()[11:]  # Remove '/recommend' from the query
     if query:
         # Check if the query is a numeric media ID
@@ -72,6 +73,44 @@ def media_recommendation(_, message):
                 message.reply_text("Choose a movie/series:", reply_markup=keyboard)
             else:
                 message.reply_text("Sorry, I couldn't find any recommendations for that movie or TV series.")
+        else:
+            # Search for movies and TV series
+            media_results = search_media(query)
+
+            if media_results:
+                # Filter only movies and TV series
+                media_results = [media for media in media_results if media['media_type'] in ['movie', 'tv']]
+
+                if media_results:
+                    # Get the first media from the search results
+                    media = media_results[0]
+                    media_id = media['id']
+                    media_type = media['media_type']
+
+                    # Get movie and TV series recommendations from TMDb API
+                    recommendations = get_media_recommendations(media_id, media_type)
+
+                    if recommendations:
+                        # Create a list of buttons with recommended movie/series names
+                        buttons = [
+                            [
+                                InlineKeyboardButton(
+                                    rec['title'] if rec['media_type'] == 'movie' else rec['name'],
+                                    callback_data=str(rec['id'])  # Correctly set the callback_data to the media ID as a string
+                                )
+                            ]
+                            for rec in recommendations
+                        ]
+
+                        # Add a "Close" button to the list of buttons
+                        buttons.append([InlineKeyboardButton("Close", callback_data="close")])
+
+                        # Create an InlineKeyboardMarkup with the buttons
+                        keyboard = InlineKeyboardMarkup(buttons)
+
+                        message.reply_text("Choose a movie/series:", reply_markup=keyboard)
+                    else:
+                        message.reply_text("Sorry, I couldn't find any recommendations for that movie or TV series.")
         else:
             # Search for movies and TV series
             media_results = search_media(query)
