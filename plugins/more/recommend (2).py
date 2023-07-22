@@ -160,6 +160,3 @@ def button_click(_, query):
             query.message.reply_text("Sorry, an error occurred while fetching details for this movie/series.")
 
 
-# Create a Pyrogram client and start it
-app = Client("recommend_bot", api_id=YOUR_API_ID, api_hash="YOUR_API_HASH")
-app.run()
