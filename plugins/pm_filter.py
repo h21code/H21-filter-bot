@@ -54,7 +54,8 @@ async def give_filter(client, message):
                     await save_group_settings(grpid, 'auto_ffilter', True)
                     settings = await get_settings(message.chat.id)
                     if settings['auto_ffilter']:
-                        await auto_filter(client, message)                        
+                        await auto_filter(client, message)
+                        
                         
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
@@ -483,11 +484,12 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             )
 
     btn.insert(0, [
-        InlineKeyboardButton("📮 SEND ALL FILES TO PM ", callback_data=f"send_fall#files#{offset}")
+        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Fɪʟᴇs Tᴏ PM !", callback_data=f"send_fall#files#{offset}")
     ])
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
+        req = message.from_user.id if message.from_user else 0
         try:
             settings = await get_settings(message.chat.id)
             if settings['max_btn']:
@@ -2467,6 +2469,31 @@ async def cb_handler(client: Client, query: CallbackQuery):
             [
                 InlineKeyboardButton(
                     'Mᴀx Bᴜᴛᴛᴏɴꜱ',
+                    callback_data=f'setgs#max_btn#{settings["max_btn"]}#{grp_id}',
+                ),
+                InlineKeyboardButton(
+                    '10' if settings["max_btn"] else f'{MAX_B_TN}',
+                    callback_data=f'setgs#max_btn#{settings["max_btn"]}#{grp_id}',
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    'SʜᴏʀᴛLɪɴᴋ',
+                    callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',
+                ),
+                InlineKeyboardButton(
+                    'Eɴᴀʙʟᴇ' if settings["is_shortlink"] else 'Dɪsᴀʙʟᴇ',
+                    callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',
+                ),
+            ],
+            [
+                InlineKeyboardButton('✘ Cʟᴏsᴇ ✘', callback_data='close_data')
+            ]
+        ]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_reply_markup(reply_markup)
+    await query.answer(MSG_ALRT)
+    
 async def auto_filter(client, msg, spoll=False):
     reqstr1 = msg.from_user.id if msg.from_user else 0
     reqstr = await client.get_users(reqstr1)
@@ -2596,32 +2623,6 @@ async def auto_filter(client, msg, spoll=False):
     btn.insert(0, [
         InlineKeyboardButton('ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ', url=f'https://t.me/+W5plh7_tP19lZjg1')
     ])
-                    callback_data=f'setgs#max_btn#{settings["max_btn"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '10' if settings["max_btn"] else f'{MAX_B_TN}',
-                    callback_data=f'setgs#max_btn#{settings["max_btn"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    'SʜᴏʀᴛLɪɴᴋ',
-                    callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    'Eɴᴀʙʟᴇ' if settings["is_shortlink"] else 'Dɪsᴀʙʟᴇ',
-                    callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton('✘ Cʟᴏsᴇ ✘', callback_data='close_data')
-            ]
-        ]
-            reply_markup = InlineKeyboardMarkup(buttons)
-            await query.message.edit_reply_markup(reply_markup)
-    await query.answer(MSG_ALRT)
-    
-
 
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
