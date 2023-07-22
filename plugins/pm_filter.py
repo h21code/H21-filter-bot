@@ -54,8 +54,7 @@ async def give_filter(client, message):
                     await save_group_settings(grpid, 'auto_ffilter', True)
                     settings = await get_settings(message.chat.id)
                     if settings['auto_ffilter']:
-                        await auto_filter(client, message)
-                        
+                        await auto_filter(client, message)                        
                         
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
@@ -484,12 +483,11 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             )
 
     btn.insert(0, [
-        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Fɪʟᴇs Tᴏ PM !", callback_data=f"send_fall#files#{offset}")
+        InlineKeyboardButton("📮 SEND ALL FILES TO PM ", callback_data=f"send_fall#files#{offset}")
     ])
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
-        req = message.from_user.id if message.from_user else 0
         try:
             settings = await get_settings(message.chat.id)
             if settings['max_btn']:
@@ -2500,13 +2498,12 @@ async def auto_filter(client, msg, spoll=False):
     if not spoll:
         message = msg
         settings = await get_settings(message.chat.id)
-        if message.text.startswith("/"):
-            return  # ignore commands
+        if message.text.startswith("/"): return  # ignore commands
         if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
             return
         if len(message.text) < 100:
             search = message.text
-            files, offset, total_results = await get_search_results(message.chat.id, search.lower(), offset=0, filter=True)
+            files, offset, total_results = await get_search_results(message.chat.id ,search.lower(), offset=0, filter=True)
             if not files:
                 if settings["spell_check"]:
                     return await advantage_spell_chok(client, msg)
@@ -2522,23 +2519,19 @@ async def auto_filter(client, msg, spoll=False):
     settings = await get_settings(message.chat.id)
     temp.SEND_ALL_TEMP[message.from_user.id] = files
     temp.KEYWORD[message.from_user.id] = search
-
-    # Define the variable for total_results here
     total_results_str = str(total_results)
-
     if 'is_shortlink' in settings.keys():
         ENABLE_SHORTLINK = settings['is_shortlink']
     else:
         await save_group_settings(message.chat.id, 'is_shortlink', False)
         ENABLE_SHORTLINK = False
     pre = 'filep' if settings['file_secure'] else 'file'
-    if ENABLE_SHORTLINK:
+    if ENABLE_SHORTLINK == True:
         if settings["button"]:
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"📁 {get_size(file.file_size)} ⊳ {file.file_name}",
-                        url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"📁 {get_size(file.file_size)} ⊳ {file.file_name}", url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
@@ -2562,8 +2555,7 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"📁 {get_size(file.file_size)} ⊳ {file.file_name}",
-                        callback_data=f'{pre}#{file.file_id}'
+                        text=f"📁 {get_size(file.file_size)} ⊳ {file.file_name}", callback_data=f'{pre}#{file.file_id}'
                     ),
                 ]
                 for file in files
@@ -2588,7 +2580,7 @@ async def auto_filter(client, msg, spoll=False):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
@@ -2596,8 +2588,8 @@ async def auto_filter(client, msg, spoll=False):
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                   InlineKeyboardButton("​🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
                 
@@ -2608,7 +2600,7 @@ async def auto_filter(client, msg, spoll=False):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
@@ -2616,7 +2608,7 @@ async def auto_filter(client, msg, spoll=False):
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
+                   InlineKeyboardButton("🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
                    InlineKeyboardButton("🎧 LANGUAGES​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
