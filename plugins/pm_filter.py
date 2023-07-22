@@ -38,20 +38,13 @@ BUTTONS = {}
 SPELL_CHECK = {}
 
 
-# Define the specific group ID where the command should work
-SPECIFIC_GROUP_ID = -1001738504456
-
-@Client.on_message(filters.group & filters.text & filters.incoming)
+@Client.on_message(filters.group | filters.private  & filters.text & filters.incoming)
 async def give_filter(client, message):
-    if message.chat.id == SPECIFIC_GROUP_ID:
-        # The command should work in the specific group
-        if message.text.startswith("/movie"):
-            await your_command_function(client, message)
-    else:
+    if message.chat.id != SUPPORT_CHAT_ID:
         glob = await global_filters(client, message)
-        if glob is False:
+        if glob == False:
             manual = await manual_filters(client, message)
-            if manual is False:
+            if manual == False:
                 settings = await get_settings(message.chat.id)
                 try:
                     if settings['auto_ffilter']:
@@ -61,9 +54,7 @@ async def give_filter(client, message):
                     await save_group_settings(grpid, 'auto_ffilter', True)
                     settings = await get_settings(message.chat.id)
                     if settings['auto_ffilter']:
-                        await auto_filter(client, message)
-
-                        
+                        await auto_filter(client, message)                        
                         
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
