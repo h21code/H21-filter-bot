@@ -1,3 +1,5 @@
+import os
+import requests
 from pyrogram import Client, filters
 from urllib.parse import urlparse
 
@@ -6,7 +8,7 @@ def is_valid_instagram_url(url):
     parsed_url = urlparse(url)
     return parsed_url.netloc == 'www.instagram.com' and ('/reel/' in parsed_url.path or '/p/' in parsed_url.path)
 
-@app.on_message(filters.command("insta"))
+@Client.on_message(filters.command("insta"))
 def insta(_, update):
     if len(update.command) != 2:
         update.reply_text("You need to provide an Instagram reel or image link along with the /insta command.")
