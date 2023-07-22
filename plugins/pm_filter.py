@@ -39,7 +39,7 @@ SPELL_CHECK = {}
 
 
 # Define the specific group ID where the command should work
-SPECIFIC_GROUP_ID = YOUR_SPECIFIC_GROUP_ID_HERE
+SPECIFIC_GROUP_ID = -1001738504456
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
