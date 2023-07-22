@@ -47,8 +47,8 @@ def media_recommendation(_, message):
         # Check if the query is a numeric media ID
         if query.isdigit():
             # Fetch recommendations directly with the provided media ID
-            media_id = int(query)
-            media_type = 'movie' if media_id < 200000 else 'tv'  # Assume media IDs < 200000 are for movies, otherwise TV series
+            media_id = query
+            media_type = 'movie' if int(media_id) < 200000 else 'tv'  # Assume media IDs < 200000 are for movies, otherwise TV series
             recommendations = get_media_recommendations(media_id, media_type)
 
             if recommendations:
@@ -124,12 +124,15 @@ def button_click(_, query):
     if query.data == "close":
         query.message.delete()
     else:
-        media_id = int(query.data)  # Convert the correct media ID from string to integer
+        media_id = query.data  # Use the media ID as a string directly
+
+        # Fetch details for the media using the TMDb API
         url = f"{TMDB_API_URL}/movie/{media_id}"
         params = {
             "api_key": TMDB_API_KEY,
         }
         response = requests.get(url, params=params)
+
         if response.status_code == 200:
             data = response.json()
             title = data.get('title')
@@ -156,4 +159,7 @@ def button_click(_, query):
         else:
             query.message.reply_text("Sorry, an error occurred while fetching details for this movie/series.")
 
-# ... (Rest of the code remains the same)
+
+# Create a Pyrogram client and start it
+app = Client("recommend_bot", api_id=YOUR_API_ID, api_hash="YOUR_API_HASH")
+app.run()
