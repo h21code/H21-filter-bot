@@ -1026,7 +1026,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_text(
-                text=f"<b>Cᴜʀʀᴇɴᴛ Sᴇᴛᴛɪɴɢs Fᴏʀ {title}\n\nYᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs.</b>",
+                text=f"<b>Current Settings For {title}\n\nYou Can Change Settings As Your Wish By Using Below Buttons.</b>",
                 disable_web_page_preview=True,
                 parse_mode=enums.ParseMode.HTML
             )
@@ -1041,15 +1041,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 and st.status != enums.ChatMemberStatus.OWNER
                 and str(userid) not in ADMINS
         ):
-            await query.answer("Yᴏᴜ Dᴏɴ'ᴛ Hᴀᴠᴇ Tʜᴇ Rɪɢʜᴛs Tᴏ Dᴏ Tʜɪs !", show_alert=True)
+            await query.answer("You dont have the rights to do this !", show_alert=True)
             return
         title = query.message.chat.title
         settings = await get_settings(grp_id)
         btn2 = [[
-                 InlineKeyboardButton("Cʜᴇᴄᴋ PM", url=f"t.me/{temp.U_NAME}")
+                 InlineKeyboardButton("CHECK BOT PM", url=f"t.me/{temp.U_NAME}")
                ]]
         reply_markup = InlineKeyboardMarkup(btn2)
-        await query.message.edit_text(f"<b>Yᴏᴜʀ sᴇᴛᴛɪɴɢs ᴍᴇɴᴜ ғᴏʀ {title} ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ʏᴏᴜʀ PM</b>")
+        await query.message.edit_text(f"<b>Your Settings Menu For {title} Has Been Sent To Your PM</b>")
         await query.message.edit_reply_markup(reply_markup)
         if settings is not None:
             buttons = [
