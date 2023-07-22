@@ -1303,7 +1303,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
  elif query.data == "start":
  buttons = [[
- InlineKeyboardButton('➕ Add Me To Your Group ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+ InlineKeyboardButton('➕ 𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽  ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
  ]] 
  reply_markup = InlineKeyboardMarkup(buttons)
  await client.edit_message_media(
