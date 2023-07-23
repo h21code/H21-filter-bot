@@ -71,7 +71,7 @@ async def video(client, message):
     ffile = file.replace("mp3", "mp4")
     os.rename(file, ffile)
     buttons = [[
-        InlineKeyboardButton("JOIN MOVIES", url="https://t.me/NASRANI_UPDATE")
+        InlineKeyboardButton("JOIN MOVIES", url="https://t.me/mallufiles")
     ]]                           
     await message.reply_video(
     video=ffile, caption=f"[{sname}]({r['data']['results'][0]['url']}) - from @nasrani_update ",thumb=thumbnail,
@@ -89,7 +89,7 @@ async def video(client, message):
 #    await client.send_message(LOG_CHANNEL, A.format(message.from_user.mention, message.from_user.id)) 
         
 
-@Client.on_message(filters.command('ssong') & filters.text)
+@Client.on_message(filters.command('song') & filters.text)
 async def song(client, message):
     try:
        args = message.text.split(None, 1)[1]
@@ -125,7 +125,7 @@ async def song(client, message):
 async def r_message(client, message):
     mention = message.from_user.mention
     buttons = [[
-        InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'http://t.me/nasrani_update')
+        InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐜𝐡𝐚𝐧𝐧𝐞𝐥', url=f'http://t.me/mallufiles')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await message.reply_text(START_MESSAGE.format(message.from_user.mention, message.chat.title),
