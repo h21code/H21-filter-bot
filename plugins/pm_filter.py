@@ -95,7 +95,6 @@ async def next_page(bot, query):
         return
     settings = await get_settings(query.message.chat.id)
     temp.SEND_ALL_TEMP[query.from_user.id] = files
-    total_results_str = str(total_results)
     
     if 'is_shortlink' in settings.keys():
         ENABLE_SHORTLINK = settings['is_shortlink']
@@ -152,16 +151,14 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
                 ]
             )
                 
@@ -172,16 +169,14 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
                 ]
             )
     try:
