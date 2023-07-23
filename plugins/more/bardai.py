@@ -2,6 +2,7 @@ import os
 import requests
 from requests.utils import requote_uri
 from pyrogram import Client, filters
+from info import LOG_CHANNEL
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import time
 
@@ -70,7 +71,9 @@ async def reply_info(client, message):
                     reply_markup=BUTTONS,
                     quote=True if idx == 0 else False  # Quote the first message only
                 )
-            
+            log_message = f"--AI Chat--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
+            await client.send_message(LOG_CHANNEL, log_message)
+
             # Delete the loading message after showing the results
             await searching_message.delete()
 
