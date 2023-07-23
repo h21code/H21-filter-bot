@@ -23,13 +23,8 @@ BATCH_FILES = {}
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         buttons = [[
-            InlineKeyboardButton('⚚ ADD ME To YoUR GRoUP ⚚', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
-            InlineKeyboardButton('✧ sUPPoRT ✧', url='https://t.me/filmy_fundas'),
-            InlineKeyboardButton('✧ UPDATEs ✧', url='https://t.me/Funda_More')
-            ],[
-            InlineKeyboardButton('✘ cHEcK PM ✘', url='https://t.me/JNGohell')
-        ]]  
+            InlineKeyboardButton('🔰 𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 🔰', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ]]  
         reply_markup = InlineKeyboardMarkup(buttons)
         kd = await message.reply_photo(
         photo=random.choice(PICS),
@@ -46,16 +41,8 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('⇌ ADD ME To YoUR GRoUP ⇌', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
-            InlineKeyboardButton('✦ oWNER ✦', callback_data='owner_info'),
-            InlineKeyboardButton('🌿 sUPPoRT', callback_data='support_grp')
-            ],[      
-            InlineKeyboardButton('💠 HELP 💠', callback_data='help'),
-            InlineKeyboardButton('✦ ABoUT ✦', callback_data='about')
-            ],[
-            InlineKeyboardButton('💰 EARN MoNEY WITH BoT 💸', callback_data='money_bot')
-        ]] 
+            InlineKeyboardButton('➕ 𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
             photo=random.choice(PICS),
@@ -71,16 +58,8 @@ async def start(client, message):
             return
         
         buttons = [[
-            InlineKeyboardButton('⇌ ADD ME To YoUR GRoUP ⇌', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
-            InlineKeyboardButton('✦ oWNER ✦', callback_data='owner_info'),
-            InlineKeyboardButton('🌿 sUPPoRT', callback_data='support_grp')
-            ],[      
-            InlineKeyboardButton('💠 HELP 💠', callback_data='help'),
-            InlineKeyboardButton('✦ ABoUT ✦', callback_data='about')
-            ],[
-            InlineKeyboardButton('💰 EARN MoNEY WITH BoT 💸', callback_data='money_bot')
-        ]] 
+            InlineKeyboardButton('➕ 𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
             photo=random.choice(PICS),
