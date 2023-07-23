@@ -312,7 +312,7 @@ async def advantage_spoll_choker(bot, query):
                 await asyncio.sleep(10)
                 await k.delete()
                 
- #Language Code Temp               
+         
                
            
 @Client.on_callback_query(filters.regex(r"^languages#"))
