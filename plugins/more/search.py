@@ -34,10 +34,18 @@ def result(query):
 
         return result_str
     except Exception as error:
-        return str(error)
+        return "An error occurred while processing the request."
 
 @Client.on_message(filters.command("search"))
 async def reply_info(client, message):
+    # Check if the user provided a query
+    if len(message.text.split()) <= 1:
+        await message.reply_text(
+            text="Please provide a query along with the /search command.",
+            quote=True
+        )
+        return
+
     query = message.text.split(None, 1)[1]
     result_caption = result(query)
     await message.reply_photo(
