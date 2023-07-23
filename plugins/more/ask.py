@@ -19,7 +19,7 @@ def result(query):
 
         return answer
     except Exception as error:
-        return "No Answer Found."
+        return "😿 No Answer Found."
 
 @Client.on_message(filters.command("ask"))
 async def reply_info(client, message):
