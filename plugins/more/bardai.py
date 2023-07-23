@@ -71,7 +71,7 @@ async def reply_info(client, message):
                     reply_markup=BUTTONS,
                     quote=True if idx == 0 else False  # Quote the first message only
                 )
-            log_message = f"--AI Chat--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
+            log_message = f"--𝗔𝗜 𝗖𝗛𝗔𝗧--\n ᴜsᴇʀ : {message.from_user.mention} \n ǫᴜᴇʀʏ : {query}"
             await client.send_message(LOG_CHANNEL, log_message)
 
             # Delete the loading message after showing the results
