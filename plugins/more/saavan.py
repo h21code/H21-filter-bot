@@ -94,7 +94,7 @@ async def song(client, message):
     try:
        args = message.text.split(None, 1)[1]
     except:
-        return await message.reply("/ssong requires an argument.")
+        return await message.reply("Please provide a query along with the /song command.")
     if args.startswith(" "):
         await message.reply("/ssong requires an argument.")
         return ""
