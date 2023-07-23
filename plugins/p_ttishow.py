@@ -283,10 +283,10 @@ async def list_chats(bot, message):
 @Client.on_message(filters.command('status') & filters.user(ADMINS) & filters.incoming)
 async def get_ststs(bot, message):
     buttons = [[
-            InlineKeyboardButton('✘ ᴄʟᴏsᴇ ✘', callback_data='close_data')
+            InlineKeyboardButton('CLOSE', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
-    kdbotz = await message.reply('Fetching stats..')
+    kdbotz = await message.reply('Fetching status..')
     uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
     ram = psutil.virtual_memory().percent
     cpu = psutil.cpu_percent()
