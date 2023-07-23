@@ -42,10 +42,11 @@ def result(api_response, user, query):
 
 @Client.on_message(filters.command("ai"))
 async def reply_info(client, message):
-    query = message.text.split(None, 1)[1].strip()  # Extract the query and remove leading/trailing spaces
-    if not query:
-        await message.reply_text("Please provide a query along with the /ai command.")
-        return
+	try:
+        query = message.text.split(None, 1)[1].strip()  # Extract the query and remove leading/trailing spaces
+        if not query:
+            await message.reply_text("Please provide a query along with the /ai command.")
+            return
 
     user = message.from_user.username or message.from_user.first_name
 
