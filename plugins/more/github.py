@@ -48,9 +48,8 @@ async def reply_info(client, message):
             return
 
         result_caption = result(query)
-        await message.reply_photo(
-            photo="https://telegra.ph/file/a4545775e137feda80612.jpg",
-            caption=result_caption,
+        await message.reply_text(
+            text=result_caption,
             reply_markup=BUTTONS,
             quote=True
         )
