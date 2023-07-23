@@ -68,7 +68,7 @@ async def answer(bot, query):
                 logger.exception(e)
                 f_caption=f_caption
         if f_caption is None:
-            f_caption = f"{file.file_name}"
+            f_caption = f"📁 {file.file_name}"
         results.append(
             InlineQueryResultCachedDocument(
                 title=file.file_name,
@@ -78,7 +78,7 @@ async def answer(bot, query):
                 reply_markup=reply_markup))
 
     if results:
-        switch_pm_text = f"{emoji.FILE_FOLDER} Results - {total}"
+        switch_pm_text = f"Search Movies here"
         if string:
             switch_pm_text += f" for {string}"
         try:
