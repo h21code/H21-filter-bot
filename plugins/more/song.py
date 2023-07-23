@@ -25,7 +25,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
 
-@Client.on_message(filters.command('song'))
+@Client.on_message(filters.command('/ytsong'))
 def song(client, message):
 
     user_id = message.from_user.id 
@@ -49,7 +49,7 @@ def song(client, message):
         open(thumb_name, 'wb').write(thumb.content)
 
 
-        performer = f"[ By - 𝙼𝙻𝚉 𝙱𝙾𝚃𝚉]" 
+        performer = f"[ 𝙼𝙰𝙻𝙻𝚄𝙵𝙸𝙻𝙴𝚂]" 
         duration = results[0]["duration"]
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
@@ -66,7 +66,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = '**JOIN ›› [🍁 ᴄʜᴀɴɴᴇʟ 🍁](https://t.me/MLZ_BOTZ)**\n**𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 ›› [muѕíc вσч](https://t.me/MLZ_BOTZ)**'
+        rep = '**JOIN ›› [🍁 ᴄʜᴀɴɴᴇʟ 🍁](https://t.me/mallifiles)**\n**𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 ›› [Mallufiles](https://t.me/mallufiles)**'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -95,7 +95,7 @@ def get_text(message: Message) -> [None,str]:
         return None
 
 
-@Client.on_message(filters.command(["video", "mp4"]))
+@Client.on_message(filters.command(["ytvideo", "mp4"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
@@ -140,7 +140,7 @@ async def vsong(client, message: Message):
     capy = f"""
 **𝚃𝙸𝚃𝙻𝙴 :** [{thum}]({mo})
 **𝚁𝙴𝚀𝚄𝙴𝚂𝚃𝙴𝙳 𝙱𝚈 :** {message.from_user.mention}
-**@ᴄᴄᴏᴍ_ᴛᴇᴀᴍ**
+**@mallufiles**
 """
     await client.send_video(
         message.chat.id,
