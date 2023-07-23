@@ -64,7 +64,7 @@ async def save_group(bot, message):
                                                  caption=(script.MELCOW_ENG.format(u.mention, message.chat.title)),
                                                  reply_markup=InlineKeyboardMarkup(
                                                                          [[
-                                                                             InlineKeyboardButton('🍁 sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​ 🍁', url='https://t.me/bot_channel_011')
+                                                                             InlineKeyboardButton('🍁 sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​ 🍁', url='https://t.me/mallufiles_chat')
                                                                         
                                                                         ]]
                                                  ),
