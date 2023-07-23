@@ -79,8 +79,13 @@ async def reply_info(client, message):
             await searching_message.delete()
             await message.reply_text("😿 No results found.")
 
+    except IndexError:
+        # If the user didn't provide a query, handle the IndexError and send an appropriate response
+        await message.reply_text("Please provide a query along with the /ai command.")
+
     except Exception as e:
         pass
+
 
 @Client.on_callback_query(filters.regex('^close_data$'))
 async def close_data(client, callback_query):
