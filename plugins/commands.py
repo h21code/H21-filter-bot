@@ -288,13 +288,6 @@ async def start(client, message):
         file_id=file_id,
         caption=f_caption,
         protect_content=True if pre == 'filep' else False,
-        reply_markup=InlineKeyboardMarkup(
-            [
-             [
-              InlineKeyboardButton("❤️‍🔥 MovIEs ❤️‍🔥", url='https://t.me/Funda_More')     
-             ]
-            ]
-        )
     )
                     
 
