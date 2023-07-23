@@ -191,7 +191,7 @@ Nᴀᴍᴇ - {}"""
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
     
     CAPTION = """
-@filmy_fundas {file_name}
+<code>{file_name}</code>
 
 ❍ sɪᴢᴇ : {file_size}"""
 
