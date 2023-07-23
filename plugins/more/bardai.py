@@ -1,7 +1,7 @@
 import os
 import requests
 from requests.utils import requote_uri
-from pyrogram import Client, filters, enums
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import time
 
@@ -42,42 +42,45 @@ def result(api_response, user, query):
 
 @Client.on_message(filters.command("ai"))
 async def reply_info(client, message):
-	try:
-        query = message.text.split(None, 1)[1].strip()  # Extract the query and remove leading/trailing spaces
+    try:
+        query = message.text.split(None, 1)[1].strip()  
         if not query:
             await message.reply_text("Please provide a query along with the /ai command.")
             return
 
-    user = message.from_user.username or message.from_user.first_name
+        user = message.from_user.username or message.from_user.first_name
 
-    # Send the "Searching for: (searched query here)" message
-    searching_message = await message.reply_text(f"✅ Searching for: {query}...")
+        # Send the "Searching for: (searched query here)" message
+        searching_message = await message.reply_text(f"✅ Searching for: {query}...")
 
-    try:
-        # Make the request to the API and get the JSON response
-        url = API + requote_uri(query.lower())
-        api_response = requests.get(url).json()
+        try:
+            # Make the request to the API and get the JSON response
+            url = API + requote_uri(query.lower())
+            api_response = requests.get(url).json()
 
-        # Send the "Generating answers for you..." message and wait for 1 second before proceeding
-        await searching_message.edit_text("✅ Generating answers for you...")
-        time.sleep(1)
+            # Send the "Generating answers for you..." message and wait for 1 second before proceeding
+            await searching_message.edit_text("✅ Generating answers for you...")
+            time.sleep(1)
 
-        result_messages = result(api_response, user, query)
-        for idx, result_content in enumerate(result_messages):
-            # Send each part of the message as a separate message
-            await message.reply_text(
-                text=result_content,
-                reply_markup=BUTTONS,
-                quote=True if idx == 0 else False  # Quote the first message only
-            )
-        
-        # Delete the loading message after showing the results
-        await searching_message.delete()
+            result_messages = result(api_response, user, query)
+            for idx, result_content in enumerate(result_messages):
+                # Send each part of the message as a separate message
+                await message.reply_text(
+                    text=result_content,
+                    reply_markup=BUTTONS,
+                    quote=True if idx == 0 else False  # Quote the first message only
+                )
+            
+            # Delete the loading message after showing the results
+            await searching_message.delete()
+
+        except Exception as e:
+            # If an error occurs, send a "No results found" message and delete the loading message
+            await searching_message.delete()
+            await message.reply_text("😿 No results found.")
 
     except Exception as e:
-        # If an error occurs, send a "No results found" message and delete the loading message
-        await searching_message.delete()
-        await message.reply_text("😿 No results found.")
+        pass
 
 @Client.on_callback_query(filters.regex('^close_data$'))
 async def close_data(client, callback_query):
