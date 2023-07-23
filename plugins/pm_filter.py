@@ -85,7 +85,7 @@ async def next_page(bot, query):
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return
 
-    files, n_offset, total = await get_search_results(query.message.chat.id, search, offset=offset, filter=True)
+    files, n_offset, total, total_results= await get_search_results(query.message.chat.id, search, offset=offset, filter=True)
     try:
         n_offset = int(n_offset)
     except:
@@ -95,7 +95,7 @@ async def next_page(bot, query):
         return
     settings = await get_settings(query.message.chat.id)
     temp.SEND_ALL_TEMP[query.from_user.id] = files
-    
+    total_results_str = str(total_results)
     if 'is_shortlink' in settings.keys():
         ENABLE_SHORTLINK = settings['is_shortlink']
     else:
@@ -151,14 +151,16 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
+                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"#"),
+                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
+                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"#"),
+                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
                 
@@ -169,14 +171,16 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
+                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"#"),
+                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                   InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"selecedlang")
+                   InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"#"),
+                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
                 ]
             )
     try:
@@ -353,7 +357,6 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     req = query.from_user.id
     chat_id = query.message.chat.id
     message = query.message
-    total_results_str = str(total_results)
     if query.message.reply_to_message and int(query.from_user.id) not in [query.message.reply_to_message.from_user.id, 0]:
         return await query.answer(
             f"⚠️ ʜᴇʟʟᴏ{query.from_user.first_name},\nᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,\nʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ...",
@@ -438,8 +441,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                    InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"#")
                 ],
             )
 
@@ -447,8 +449,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                    InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"#")
                 ],
             )
 
@@ -460,8 +461,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                    InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"#")
                 ],
             )
 
@@ -469,8 +469,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f"🗂 FILES : {total_results_str}", callback_data=f"send_fall#files#{offset}"),
-                   InlineKeyboardButton("🎧 LANGUAGES ​", callback_data=f"languages#{search.replace(' ', '_')}#{key}")
+                    InlineKeyboardButton(f"🎭 Result for your selected language", callback_data=f"#")
                 ]
             )
 
