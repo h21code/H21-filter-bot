@@ -358,7 +358,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     req = query.from_user.id
     chat_id = query.message.chat.id
     message = query.message
-    
+    total_results_str = str(total_results)
     if query.message.reply_to_message and int(query.from_user.id) not in [query.message.reply_to_message.from_user.id, 0]:
         return await query.answer(
             f"⚠️ ʜᴇʟʟᴏ{query.from_user.first_name},\nᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,\nʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ...",
