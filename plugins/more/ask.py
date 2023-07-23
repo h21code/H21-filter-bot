@@ -19,10 +19,18 @@ def result(query):
 
         return answer
     except Exception as error:
-        return str(error)
+        return "No Answer Found."
 
 @Client.on_message(filters.command("ask"))
 async def reply_info(client, message):
+    # Check if the user provided a query
+    if len(message.text.split()) <= 1:
+        await message.reply_text(
+            text="Please provide a query along with the /ask command.",
+            quote=True
+        )
+        return
+
     query = message.text.split(None, 1)[1]
     result_content = result(query)
     await message.reply_text(
