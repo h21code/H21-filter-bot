@@ -2487,7 +2487,7 @@ async def auto_filter(client, msg, spoll=False):
                     return
             else:
                 # Delete the "Searching for query..." message
-                await asyncio.sleep(1)
+                await asyncio.sleep(2)
                 await search_message.delete()
         else:
             return
