@@ -2463,6 +2463,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_reply_markup(reply_markup)
     await query.answer(MSG_ALRT)
     
+
 async def auto_filter(client, msg, spoll=False):
     reqstr1 = msg.from_user.id if msg.from_user else 0
     reqstr = await client.get_users(reqstr1)
@@ -2480,17 +2481,20 @@ async def auto_filter(client, msg, spoll=False):
             files, offset, total_results = await get_search_results(message.chat.id, search.lower(), offset=0, filter=True)
             if not files:
                 if settings["spell_check"]:
+                    await search_message.delete()
                     return await advantage_spell_chok(client, msg)
                 else:
                     if NO_RESULTS_MSG:
                         await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, search)))
+                    await search_message.delete()  # Delete the "Searching for query..." message when there are no files found
                     return
             else:
-                # Delete the "Searching for query..." message
-                await asyncio.sleep(2)
+                # Delete the "Searching for query..." message if files are found
                 await search_message.delete()
         else:
             return
+
+
     
     else:
         message = msg.message.reply_to_message  # msg will be callback query
