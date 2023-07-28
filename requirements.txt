@@ -35,4 +35,4 @@ speedtest-cli
 python-dotenv
 Flask==2.2.2
 gunicorn==20.1.0
-
+httpcore 0.17.3
