@@ -64,7 +64,7 @@ async def pm_text(bot, message):
     if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
     if user_id in ADMINS: return # ignore admins
     pm_msg=f"<b>👻 𝐏𝐌_𝐌𝐒𝐆 👻\n\n📝ᴍᴇssᴀɢᴇ:-{content}\n\n👶🏻ʀᴇQᴜᴇꜱᴛᴇᴅ ʙʏ:-{user}\n\n🃏ᴜꜱᴇʀ ɪᴅ:-{user_id}</b>"
-    await client.send_message(LOG_CHANNEL, pm_msg)
+    await bot.send_message(LOG_CHANNEL, pm_msg)
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
