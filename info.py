@@ -53,6 +53,9 @@ DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://123:123@cluster0.ngtyb
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
+# File Stream information
+BIN_CHANNEL = int(environ. get('BIN_CHANNEL', '-1001965839568'))
+
 # Custom Chats
 FILE_CHANNEL = int(environ.get('FILE_CHANNEL', '-1001616308548'))
 FILE_CHANNEL_LINK = environ.get('FILE_CHANNEL_LINK', 'https://t.me/TGxMULTIBOTDB')
