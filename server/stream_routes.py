@@ -4,12 +4,12 @@ import math
 import logging
 import secrets
 import mimetypes
-from Lallus.vars import Var
+from stream.vars import Var
 from aiohttp import web
 from pyrogram import Client
-from Lallus.utils.custom_dl import TGCustomYield, chunk_size, offset_fix
-from Lallus.utils.render_template import render_page
-from Lallus.utils.time_format import get_readable_time
+from stream.utils.custom_dl import TGCustomYield, chunk_size, offset_fix
+from stream.utils.render_template import render_page
+from stream.utils.time_format import get_readable_time
 from info import BIN_CHANNEL
 import time
 StartTime = time.time()
