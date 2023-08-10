@@ -1,5 +1,5 @@
 import re
-from os import environ
+from os import getenv, environ
 from Script import script 
 from time import time
 from dotenv import load_dotenv
