@@ -32,7 +32,7 @@ async def render_page(message_id):
             tag = mime_type.split('/')[0].strip()
             html = (await r.read()).replace('tag', tag) % (heading, file_name, src, src, src)
     elif mime_type.lower() in audio_formats:
-        async with aiofiles.open('Adarsh/template/req.html') as r:
+        async with aiofiles.open('stream/template/req.html') as r:
             heading = 'Listen {}'.format(file_name)
             tag = mime_type.split('/')[0].strip()
             html = (await r.read()).replace('tag', tag) % (heading, file_name, src, src, src)
