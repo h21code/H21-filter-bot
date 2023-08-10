@@ -55,6 +55,8 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # File Stream information
 BIN_CHANNEL = int(environ. get('BIN_CHANNEL', '-1001965839568'))
+SESSION_NAME = str(getenv('SESSION_NAME', 'benanabot'))
+UPDATES_CHANNEL = int(environ. get('UPDATES_CHANNEL', '-1001646572603'))
 
 # Custom Chats
 FILE_CHANNEL = int(environ.get('FILE_CHANNEL', '-1001616308548'))
