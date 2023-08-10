@@ -3,9 +3,9 @@
 
 import asyncio
 import urllib.parse
-from Lallus.database import Database
-from Lallus.human_readable import humanbytes
-from Lallus.vars import Var
+from stream.database import Database
+from stream.human_readable import humanbytes
+from stream.vars import Var
 from info import BIN_CHANNEL, UPDATES_CHANNEL, SESSION_NAME
 from pyrogram import filters, Client
 from pyrogram.errors import FloodWait, UserNotParticipant
