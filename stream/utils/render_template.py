@@ -1,9 +1,9 @@
 
 
-from Lallus.vars import Var, BIN_CHANNEL
+from stream.vars import Var, BIN_CHANNEL
 from pyrogram import Client
-from Lallus.utils.custom_dl import TGCustomYield
-from Lallus.utils.file_size import human_size
+from stream import TGCustomYield
+from stream.utils.file_size import human_size
 import urllib.parse
 import secrets
 import mimetypes
