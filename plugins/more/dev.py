@@ -16,6 +16,7 @@ async def dev_animation(client, message):
         "MD NOOR MANJEET SINGH DIPESH THESE ARE MY PERU DEV",
     ]
 
-    for i in animation_ttl:
+    sent_message = await message.reply_text(animation_chars[0])
+    for char in animation_chars[1:]:
+        await sent_message.edit_text(char)
         await asyncio.sleep(animation_interval)
-        await message.edit_text(animation_chars[i % 72])
