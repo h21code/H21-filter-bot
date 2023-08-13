@@ -45,7 +45,7 @@ async def private_receive_handler(client, m:Message):
         log_msg = await m.reply_to_message.forward(chat_id=BIN_CHANNEL)
         file_name = get_media_file_name(m.reply_to_message)
         file_size = humanbytes(get_media_file_size(m.reply_to_message))
-        stream_link = "https://{}/{}/{}".format(Var.FQDN, log_msg.id, file_name)"
+        stream_link = "https://{}/{}/{}".format(Var.FQDN, log_msg.id, file_name)
 
         msg_text ="""
 <i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n
@@ -76,7 +76,7 @@ async def channel_receive_handler(bot, broadcast):
         return
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = "https://{}/{}".format(Var.FQDN, log_msg.id)"
+        stream_link = "https://{}/{}".format(Var.FQDN, log_msg.id)
         await log_msg.reply_text(
             text=f"**Cʜᴀɴɴᴇʟ Nᴀᴍᴇ:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** https://t.me/{(await bot.get_me()).username}?start=AvishkarPatil_{str(log_msg.id)}",
             # text=f"**Cʜᴀɴɴᴇʟ Nᴀᴍᴇ:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** https://t.me/FxStreamBot?start=AvishkarPatil_{str(log_msg.id)}",
