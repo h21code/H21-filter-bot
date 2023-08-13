@@ -10,9 +10,9 @@ async def dev_animation(client, message):
     animation_ttl = range(0, 288)
     animation_chars = [
         "M_ ____",
-        "MD ____",
-        "DIPES_",
-        "DIPESH",
+        "MA ____",
+        "MALLU ___",
+        "MALLUFILES",
         "MD NOOR MANJEET SINGH DIPESH THESE ARE MY PERU DEV",
     ]
 
