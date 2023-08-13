@@ -1,11 +1,10 @@
+import os
+import requests
 from pyrogram import Client, filters
 import asyncio
 
-api_id = YOUR_API_ID
-api_hash = 'YOUR_API_HASH'
-app = Client("my_account", api_id=api_id, api_hash=api_hash)
 
-@app.on_message(filters.command("dev"))
+@Client.on_message(filters.command("dev"))
 async def dev_animation(client, message):
     animation_interval = 0.01
     animation_ttl = range(0, 288)
