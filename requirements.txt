@@ -37,3 +37,4 @@ Flask==2.2.2
 gunicorn==20.1.0
 heroku3
 Shazamio
+openai==0.25.0
